@@ -66,6 +66,26 @@ pip install -r .claude/skills/fifa-analyzer/scripts/requirements.txt
 谁最可能夺冠？
 ```
 
+## 📸 效果展示
+
+### 今日赛程
+
+![今日世界杯赛程](docs/images/screenshot-schedule.png)
+
+*6场比赛卡片，按小组分色标注，实时显示比赛时间、场地信息*
+
+### 赔率分析
+
+![赔率分析面板](docs/images/screenshot-odds.png)
+
+*1X2欧赔、大小球、亚盘完整展示，隐含概率可视化条形图*
+
+### 小组积分榜
+
+![H组积分榜](docs/images/screenshot-standings.png)
+
+*实时积分榜含净胜球、出线状态标识，出线规则说明*
+
 ## 📖 命令示例
 
 ### 查询赛程
