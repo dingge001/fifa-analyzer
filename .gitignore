@@ -40,6 +40,8 @@ Thumbs.db
 # Cache data (keep directory structure with .gitkeep)
 .claude/skills/fifa-analyzer/data/*/*
 !.claude/skills/fifa-analyzer/data/*/.gitkeep
+!.claude/skills/fifa-analyzer/data/tracker/
+!.claude/skills/fifa-analyzer/data/tracker/*
 
 # Logs
 *.log
