@@ -14,6 +14,8 @@ import re
 import sys
 import time
 from datetime import datetime, timezone, timedelta
+
+CST = timezone(timedelta(hours=8))  # 北京时间 UTC+8
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
@@ -474,7 +476,7 @@ def parse_head_to_head(summary: Dict) -> List[Dict]:
 
 def get_today_matches(client: ESPNClient) -> List[Dict]:
     """获取今日比赛"""
-    today = datetime.now().strftime("%Y%m%d")
+    today = datetime.now(CST).strftime("%Y%m%d")
     data = client.get_scoreboard(today)
 
     matches = []
@@ -562,7 +564,7 @@ def main():
                 return
 
         elif args.action == "schedule":
-            date = args.date or datetime.now().strftime("%Y-%m-%d")
+            date = args.date or datetime.now(CST).strftime("%Y-%m-%d")
             result = get_schedule_by_date(client, date)
             if not args.json:
                 print_match_list(result, f"{date} 赛程")
@@ -586,7 +588,7 @@ def main():
                 return
 
         elif args.action == "odds":
-            date = args.date or datetime.now().strftime("%Y-%m-%d")
+            date = args.date or datetime.now(CST).strftime("%Y-%m-%d")
             if not args.team:
                 parser.error("odds 操作需要 --team 参数")
             result = get_odds_for_match(client, date, args.team)

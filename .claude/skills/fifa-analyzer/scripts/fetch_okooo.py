@@ -11,7 +11,9 @@ import os
 import re
 import sys
 import time
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
+
+CST = timezone(timedelta(hours=8))  # UTC+8
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -224,7 +226,7 @@ class OkoooClient:
 
         return {
             "source": "澳客网/竞彩官方",
-            "update_time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "update_time": datetime.now(CST).strftime("%Y-%m-%d %H:%M:%S"),
             "matches": matches,
         }
 
@@ -237,7 +239,7 @@ class OkoooClient:
         return {
             "source": "澳客网/竞彩官方",
             "match_id": match_id,
-            "update_time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "update_time": datetime.now(CST).strftime("%Y-%m-%d %H:%M:%S"),
             **odds,
         }
 
@@ -248,7 +250,7 @@ class OkoooClient:
 
         return {
             "source": "澳客网/竞彩官方",
-            "update_time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "update_time": datetime.now(CST).strftime("%Y-%m-%d %H:%M:%S"),
             "experts": experts,
         }
 
@@ -260,7 +262,7 @@ class OkoooClient:
 
         return {
             "source": "澳客网/竞彩官方",
-            "update_time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "update_time": datetime.now(CST).strftime("%Y-%m-%d %H:%M:%S"),
             "tables_count": len(tables),
         }
 

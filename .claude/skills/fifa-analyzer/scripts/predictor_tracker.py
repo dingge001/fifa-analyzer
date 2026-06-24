@@ -10,7 +10,9 @@ import json
 import os
 import sys
 import time
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
+
+CST = timezone(timedelta(hours=8))  # UTC+8
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -69,7 +71,7 @@ def default_prediction(date: str, match: str, group: str,
         "status": "pending",                # pending / won / lost / void
         "actual_result": None,              # home_win / draw / away_win
         "profit_loss": 0.0,
-        "created_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "created_at": datetime.now(CST).strftime("%Y-%m-%d %H:%M:%S"),
         "updated_at": None,
     }
 
@@ -150,7 +152,7 @@ class PredictionTracker:
         for pred in self.data["predictions"]:
             if pred["id"] == pred_id:
                 pred["actual_result"] = actual_result
-                pred["updated_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                pred["updated_at"] = datetime.now(CST).strftime("%Y-%m-%d %H:%M:%S")
 
                 # 计算盈亏
                 if actual_result == pred["prediction"]:
@@ -180,7 +182,7 @@ class PredictionTracker:
                 actual = results[match_key]
                 if pred["actual_result"] is None:
                     pred["actual_result"] = actual
-                    pred["updated_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                    pred["updated_at"] = datetime.now(CST).strftime("%Y-%m-%d %H:%M:%S")
 
                     if actual == pred["prediction"]:
                         pred["status"] = "won"
@@ -326,7 +328,7 @@ def main():
         parts = args.match.split(" vs ")
         home = parts[0].strip() if len(parts) > 0 else "?"
         away = parts[1].strip() if len(parts) > 1 else "?"
-        date = args.date or datetime.now().strftime("%Y-%m-%d")
+        date = args.date or datetime.now(CST).strftime("%Y-%m-%d")
 
         # 中文标签映射
         label_map = {"home_win": "主胜", "draw": "平局", "away_win": "客胜"}
@@ -344,7 +346,7 @@ def main():
         if not args.match or not args.result:
             parser.error("update 需要 --match --result")
         # 通过比赛名查找最近的 pending 预测
-        date = args.date or datetime.now().strftime("%Y-%m-%d")
+        date = args.date or datetime.now(CST).strftime("%Y-%m-%d")
         preds = tracker.get_predictions_by_date(date)
         for p in preds:
             if args.match.lower() in p["match"].lower() and p["status"] == "pending":
