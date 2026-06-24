@@ -296,7 +296,7 @@ python .claude/skills/fifa-analyzer/scripts/cache_manager.py clean
 ## 📮 联系方式
 
 - GitHub Issues: [提交问题](https://github.com/dingge001/fifa-analyzer/issues)
-- Email: your-email@example.com
+- Email: 759455374@qq.com
 
 ---
 
