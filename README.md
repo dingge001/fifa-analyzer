@@ -38,7 +38,7 @@
 
 ```bash
 # 克隆项目
-git clone https://github.com/your-username/fifa-analyzer.git
+git clone https://github.com/dingge001/fifa-analyzer.git
 cd fifa-analyzer
 
 # 安装 Python 依赖
@@ -253,7 +253,7 @@ python .claude/skills/fifa-analyzer/scripts/cache_manager.py clean
 
 ## 📮 联系方式
 
-- GitHub Issues: [提交问题](https://github.com/your-username/fifa-analyzer/issues)
+- GitHub Issues: [提交问题](https://github.com/dingge001/fifa-analyzer/issues)
 - Email: your-email@example.com
 
 ---
