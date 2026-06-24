@@ -1,23 +1,6 @@
 ---
 name: fifa-analyzer
-description: |
-  当用户询问以下内容时触发此技能：
-  - 世界杯比赛（赛程、比分、预测）
-  - 足彩/竞彩分析（赔率、盘口、投注建议）
-  - 球队分析（实力、状态、伤停、交锋）
-  - 今日/明日比赛推荐
-  触发词：世界杯、World Cup、足彩、竞彩、赔率、盘口、betting、预测、分析、推荐、投注
-  示例："今天有什么比赛"、"分析法国vs德国"、"推荐今晚的投注"、"C组积分榜"
-metadata:
-  version: "1.0.0"
-  slash_command: "/fifa"
-allowed-tools:
-  - Read
-  - WebFetch
-  - WebSearch
-  - Bash
-  - Glob
-  - Grep
+description: "[快捷命令：/fifa] 当用户询问以下内容时触发此技能：世界杯比赛（赛程、比分、预测）、足彩/竞彩分析（赔率、盘口、投注建议）、球队分析（实力、状态、伤停、交锋）、今日/明日比赛推荐。触发词：世界杯、World Cup、足彩、竞彩、赔率、盘口、betting、预测、分析、推荐、投注。示例：今天有什么比赛、分析法国vs德国、推荐今晚的投注、C组积分榜"
 ---
 
 # FIFA Analyzer - 世界杯足彩分析技能
