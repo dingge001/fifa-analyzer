@@ -2,9 +2,12 @@
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Claude Code Skill](https://img.shields.io/badge/Claude%20Code-Skill-purple.svg)](https://claude.ai)
+[![Cursor](https://img.shields.io/badge/Cursor-Compatible-blue.svg)](https://cursor.com)
+[![Trae](https://img.shields.io/badge/Trae-Compatible-blue.svg)](https://trae.ai)
+[![Claude Code](https://img.shields.io/badge/Claude%20Code-Compatible-purple.svg)](https://claude.ai)
+[![Windsurf](https://img.shields.io/badge/Windsurf-Compatible-orange.svg)](https://codeium.com)
 
-🏆 **2026 世界杯专业足彩分析工具** - 为 Claude Code 打造的专业级足球赛事分析技能
+🏆 **2026 世界杯专业足彩分析工具** — 跨平台 AI Agent 技能，兼容 Cursor / Trae / Claude Code / Windsurf / OpenClaw / Hermes 等主流 AI 编程助手
 
 ## ✨ 功能特性
 
@@ -32,7 +35,7 @@
 ### 前置要求
 
 - Python 3.8+
-- Claude Code CLI
+- 任意支持 skill/plugin 的 AI Agent 平台
 
 ### 安装
 
@@ -45,9 +48,20 @@ cd fifa-analyzer
 pip install -r .claude/skills/fifa-analyzer/scripts/requirements.txt
 ```
 
+### 平台兼容
+
+| 平台 | 调用方式 | 说明 |
+|------|----------|------|
+| **Cursor** | Agent 模式直接对话 | 将 skill 目录放入 `.cursor/skills/` |
+| **Trae** | 插件模式 | 放入 Trae 插件目录 |
+| **Claude Code** | `/fifa` 或自然语言 | 放入 `.claude/skills/` |
+| **Windsurf** | Agent 对话 | 放入 `.windsurf/skills/` |
+| **OpenClaw** | 自然语言触发 | 放入对应 skill 目录 |
+| **Hermes** | 自然语言触发 | 放入对应 skill 目录 |
+
 ### 使用
 
-在 Claude Code 中直接触发：
+在任意 AI Agent 中直接输入：
 
 ```
 /fifa 今天有什么比赛
@@ -65,6 +79,8 @@ pip install -r .claude/skills/fifa-analyzer/scripts/requirements.txt
 西班牙和法国历史交锋战绩如何？
 谁最可能夺冠？
 ```
+
+> 💡 **提示**：不同平台的 skill 加载路径可能不同，请参考各平台文档将本项目放入正确的 skill/plugin 目录。
 
 ##  效果展示
 
@@ -274,7 +290,7 @@ python .claude/skills/fifa-analyzer/scripts/cache_manager.py clean
 ## 🙏 致谢
 
 - [ESPN](https://www.espn.com/) - 提供稳定的比赛数据 API
-- [Claude Code](https://claude.ai) - Anthropic 的 AI 编程助手
+- [Cursor](https://cursor.com) / [Trae](https://trae.ai) / [Claude Code](https://claude.ai) / [Windsurf](https://codeium.com) - AI 编程助手生态
 - 所有贡献者和支持者
 
 ## 📮 联系方式
