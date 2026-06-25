@@ -17,11 +17,11 @@
       "confidence": "谨慎推荐",
       "reason": "瑞士实力略优，加拿大已出线可能轮换",
       "bet_amount": 2500.0,
-      "status": "pending",
-      "actual_result": null,
-      "profit_loss": 0.0,
+      "status": "won",
+      "actual_result": "home_win",
+      "profit_loss": 3500.0,
       "created_at": "2026-06-24 18:51:51",
-      "updated_at": null
+      "updated_at": "2026-06-25 11:14:04"
     },
     {
       "id": "pred_1782298311_6759",
@@ -36,11 +36,11 @@
       "confidence": "推荐",
       "reason": "摩洛哥实力碾压，海地已淘汰",
       "bet_amount": 2500.0,
-      "status": "pending",
-      "actual_result": null,
-      "profit_loss": 0.0,
+      "status": "won",
+      "actual_result": "home_win",
+      "profit_loss": 475.0,
       "created_at": "2026-06-24 18:51:51",
-      "updated_at": null
+      "updated_at": "2026-06-25 11:14:04"
     },
     {
       "id": "pred_1782298312_4726",
@@ -55,11 +55,11 @@
       "confidence": "谨慎推荐",
       "reason": "巴西实力碾压，但可能轮换",
       "bet_amount": 2500.0,
-      "status": "pending",
-      "actual_result": null,
-      "profit_loss": 0.0,
+      "status": "won",
+      "actual_result": "away_win",
+      "profit_loss": 800.0,
       "created_at": "2026-06-24 18:51:52",
-      "updated_at": null
+      "updated_at": "2026-06-25 11:14:04"
     },
     {
       "id": "pred_1782298312_7789",
@@ -74,22 +74,22 @@
       "confidence": "谨慎推荐",
       "reason": "墨西哥已出线可能大轮换，捷克争第三有战意",
       "bet_amount": 2500.0,
-      "status": "pending",
-      "actual_result": null,
-      "profit_loss": 0.0,
+      "status": "lost",
+      "actual_result": "away_win",
+      "profit_loss": -2500.0,
       "created_at": "2026-06-24 18:51:52",
-      "updated_at": null
+      "updated_at": "2026-06-25 11:14:04"
     }
   ],
   "summary": {
     "total_predictions": 4,
-    "correct": 0,
-    "incorrect": 0,
-    "pending": 4,
-    "total_invested": 0,
-    "total_returned": 0,
-    "net_profit": 0,
-    "roi": 0.0,
-    "win_rate": 0.0
+    "correct": 3,
+    "incorrect": 1,
+    "pending": 0,
+    "total_invested": 10000.0,
+    "total_returned": 12275.0,
+    "net_profit": 2275.0,
+    "roi": 22.75,
+    "win_rate": 75.0
   }
 }
