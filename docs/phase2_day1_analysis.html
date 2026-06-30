@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phase 2 Day 1 分析报告 - 2026世界杯32强赛 07/01</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+        header {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .page-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        .page-subtitle {
+            text-align: center;
+            color: #64748b;
+            font-size: 1rem;
+        }
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        .nav-tab {
+            padding: 10px 20px;
+            border-radius: 8px;
+            background: #f1f5f9;
+            color: #475569;
+            cursor: pointer;
+            font-weight: 500;
+            border: 1px solid #e2e8f0;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .nav-tab:hover, .nav-tab.active {
+            background: #3b82f6;
+            color: white;
+            border-color: #3b82f6;
+        }
+        .content {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+        .content h1 {
+            font-size: 1.6rem;
+            color: #1e293b;
+            margin: 30px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .content h2 {
+            font-size: 1.3rem;
+            color: #334155;
+            margin: 25px 0 15px;
+        }
+        .match-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            padding: 30px 0;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .team-block {
+            text-align: center;
+            flex: 1;
+        }
+        .team-flag {
+            font-size: 3rem;
+            margin-bottom: 8px;
+        }
+        .team-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .team-rank {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+        .vs-text {
+            font-size: 1.5rem;
+            color: #94a3b8;
+            font-weight: bold;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .info-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+        }
+        .info-card .label {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+        .info-card .value {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #1e293b;
+            margin-top: 4px;
+        }
+        .md-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 0.9rem;
+        }
+        .md-table th {
+            background: #f1f5f9;
+            padding: 10px 12px;
+            text-align: left;
+            font-weight: 600;
+            color: #334155;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .md-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #e2e8f0;
+            color: #475569;
+        }
+        .md-table tr:hover { background: #f8fafc; }
+        .score-bar {
+            display: inline-block;
+            height: 8px;
+            border-radius: 4px;
+            margin-left: 5px;
+            vertical-align: middle;
+        }
+        .bar-home { background: #3b82f6; }
+        .bar-away { background: #ef4444; }
+        .confidence-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: white;
+        }
+        .confidence-high { background: #22c55e; }
+        .confidence-mid { background: #f59e0b; }
+        .confidence-low { background: #94a3b8; }
+        .confidence-norec { background: #ef4444; }
+        .bet-card {
+            background: linear-gradient(135deg, #eff6ff, #f0fdf4);
+            border: 1px solid #bfdbfe;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .bet-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .bet-row:last-child { border-bottom: none; }
+        .bet-type-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .type-stable { background: #dcfce7; color: #166534; }
+        .type-score { background: #fef3c7; color: #92400e; }
+        .type-parlay { background: #ede9fe; color: #5b21b6; }
+        .ev-positive { color: #22c55e; font-weight: bold; }
+        .ev-negative { color: #ef4444; font-weight: bold; }
+        .scenario-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        .scenario-card.good { border-left: 4px solid #22c55e; }
+        .scenario-card.neutral { border-left: 4px solid #f59e0b; }
+        .scenario-card.bad { border-left: 4px solid #ef4444; }
+        .summary-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .summary-stat {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .summary-stat:last-child { border-bottom: none; }
+        .phase1-summary {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        ul { padding-left: 20px; margin: 10px 0; }
+        li { margin: 5px 0; color: #475569; }
+        p { margin: 10px 0; color: #475569; }
+        blockquote {
+            border-left: 4px solid #3b82f6;
+            padding: 10px 20px;
+            margin: 15px 0;
+            background: #eff6ff;
+            color: #1e40af;
+            border-radius: 0 8px 8px 0;
+        }
+        .section-divider {
+            height: 1px;
+            background: #e2e8f0;
+            margin: 40px 0;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #94a3b8;
+            font-size: 0.85rem;
+        }
+        @media (max-width: 768px) {
+            .content { padding: 20px; }
+            .match-header { flex-direction: column; gap: 15px; }
+            .info-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="page-title">Phase 2 - 7维深度分析报告</div>
+        <div class="page-subtitle">2026世界杯32强赛 | 北京时间 7月1日 | ¥1,000 均衡策略</div>
+    </header>
+
+    <div class="nav-tabs">
+        <a class="nav-tab active" href="#overview">总览</a>
+        <a class="nav-tab" href="#match1">法国 vs 瑞典</a>
+        <a class="nav-tab" href="#match2">墨 vs 厄</a>
+        <a class="nav-tab" href="#match3">科 vs 挪</a>
+        <a class="nav-tab" href="#parlay">串关分析</a>
+        <a class="nav-tab" href="#ev">预期收益</a>
+    </div>
+
+    <!-- ========== 总览 ========== -->
+    <div class="content" id="overview">
+        <h1>📋 Phase 2 总览</h1>
+
+        <div class="phase1-summary">
+            <strong>Phase 1 回顾（06/25-30 小组赛）</strong>
+            <div style="margin-top:10px;">
+                已结算 24场 | 正确 17 | 错误 7 | 胜率 70.83%<br>
+                净盈亏 <strong style="color:#ef4444;">-¥3,866.69</strong> | ROI -9.67%
+            </div>
+            <div style="margin-top:8px;font-size:0.9rem;color:#64748b;">
+                每日¥10,000均分策略 → 命中率高但赔率价值不足，导致整体亏损
+            </div>
+        </div>
+
+        <div class="summary-box">
+            <strong>Phase 2 策略调整</strong>
+            <div class="info-grid" style="margin-top:15px;">
+                <div class="info-card">
+                    <div class="label">日预算</div>
+                    <div class="value">¥1,000</div>
+                </div>
+                <div class="info-card">
+                    <div class="label">策略</div>
+                    <div class="value">均衡型</div>
+                </div>
+                <div class="info-card">
+                    <div class="label">精选场次</div>
+                    <div class="value">2-3场/天</div>
+                </div>
+                <div class="info-card">
+                    <div class="label">分析模型</div>
+                    <div class="value">7维评分</div>
+                </div>
+            </div>
+            <div style="margin-top:15px;">
+                <strong>预算分配：</strong>
+                <ul>
+                    <li><span class="bet-type-badge type-stable">稳胆</span> 55% = ¥550 → 胜负平，选信心最高、赔率最有价值的</li>
+                    <li><span class="bet-type-badge type-score">比分</span> 30% = ¥300 → 高赔比分，小注博大</li>
+                    <li><span class="bet-type-badge type-parlay">串关</span> 15% = ¥150 → 稳胆串联，提升回报</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>📅 今日3场32强赛</h2>
+        <table class="md-table">
+            <tr>
+                <th>比赛</th>
+                <th>北京时间</th>
+                <th>7维差距</th>
+                <th>信心指数</th>
+                <th>核心判断</th>
+            </tr>
+            <tr>
+                <td><strong>法国 vs 瑞典</strong></td>
+                <td>05:00</td>
+                <td>27.2分</td>
+                <td><span class="confidence-badge confidence-high">100% 强烈推荐</span></td>
+                <td>法国胜（稳胆）</td>
+            </tr>
+            <tr>
+                <td><strong>墨西哥 vs 厄瓜多尔</strong></td>
+                <td>09:00</td>
+                <td>2.0分</td>
+                <td><span class="confidence-badge confidence-mid">10% 不建议</span></td>
+                <td>平局（价值注）</td>
+            </tr>
+            <tr>
+                <td><strong>科特迪瓦 vs 挪威</strong></td>
+                <td>01:00</td>
+                <td>10.2分</td>
+                <td><span class="confidence-badge confidence-mid">51% 谨慎推荐</span></td>
+                <td>平局（价值注）</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- ========== 法国 vs 瑞典 ========== -->
+    <div class="content" id="match1">
+        <h1>🇫🇷 法国 vs 瑞典 🇸🇪</h1>
+
+        <div class="match-header">
+            <div class="team-block">
+                <div class="team-flag">🇫🇷</div>
+                <div class="team-name">法国</div>
+                <div class="team-rank">FIFA #2 | 身价 €11.7亿</div>
+            </div>
+            <div class="vs-text">VS</div>
+            <div class="team-block">
+                <div class="team-flag">🇸🇪</div>
+                <div class="team-name">瑞典</div>
+                <div class="team-rank">FIFA #24 | 身价 €3.6亿</div>
+            </div>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="label">赛事</div>
+                <div class="value">32强淘汰赛</div>
+            </div>
+            <div class="info-card">
+                <div class="label">北京时间</div>
+                <div class="value">7/1 05:00</div>
+            </div>
+            <div class="info-card">
+                <div class="label">盘口</div>
+                <div class="value">法国让1.5球</div>
+            </div>
+            <div class="info-card">
+                <div class="label">大小球</div>
+                <div class="value">3.5</div>
+            </div>
+        </div>
+
+        <h2>📊 7维度评分对比</h2>
+        <table class="md-table">
+            <tr>
+                <th>维度</th>
+                <th>权重</th>
+                <th>🇫🇷 法国</th>
+                <th>得分条</th>
+                <th>🇸🇪 瑞典</th>
+                <th>分析要点</th>
+            </tr>
+            <tr>
+                <td>球队实力</td>
+                <td>25%</td>
+                <td><strong>95</strong></td>
+                <td><span class="score-bar bar-home" style="width:95px"></span></td>
+                <td>62</td>
+                <td>FIFA#2 vs #24，身价差3.25倍</td>
+            </tr>
+            <tr>
+                <td>近期状态</td>
+                <td>20%</td>
+                <td><strong>80</strong></td>
+                <td><span class="score-bar bar-home" style="width:80px"></span></td>
+                <td>55</td>
+                <td>法国4-1大胜挪威，瑞典1-1平日本</td>
+            </tr>
+            <tr>
+                <td>历史交锋</td>
+                <td>15%</td>
+                <td><strong>78</strong></td>
+                <td><span class="score-bar bar-home" style="width:78px"></span></td>
+                <td>30</td>
+                <td>近5次法国3胜2平不败，2020欧国联双杀</td>
+            </tr>
+            <tr>
+                <td>伤停影响</td>
+                <td>15%</td>
+                <td>75</td>
+                <td><span class="score-bar bar-home" style="width:75px"></span></td>
+                <td><strong>80</strong></td>
+                <td>法国Kimpembe跟腱伤；瑞典全员健康</td>
+            </tr>
+            <tr>
+                <td>主客场</td>
+                <td>10%</td>
+                <td>95</td>
+                <td><span class="score-bar bar-home" style="width:95px"></span></td>
+                <td>95</td>
+                <td>中立场，无主客差异</td>
+            </tr>
+            <tr>
+                <td>赔率信号</td>
+                <td>10%</td>
+                <td><strong>85</strong></td>
+                <td><span class="score-bar bar-home" style="width:85px"></span></td>
+                <td>20</td>
+                <td>1.29大热，让1.5球盘口支撑</td>
+            </tr>
+            <tr>
+                <td>其他因素</td>
+                <td>5%</td>
+                <td><strong>70</strong></td>
+                <td><span class="score-bar bar-home" style="width:70px"></span></td>
+                <td>50</td>
+                <td>法国大赛经验丰富，瑞典淘汰赛压力更大</td>
+            </tr>
+            <tr style="background:#f0fdf4; font-weight:bold;">
+                <td>加权总分</td>
+                <td>100%</td>
+                <td style="color:#22c55e; font-size:1.2rem;">84.2</td>
+                <td></td>
+                <td style="color:#ef4444; font-size:1.2rem;">57.0</td>
+                <td>差距 27.2 分</td>
+            </tr>
+        </table>
+
+        <blockquote>
+            信心指数：<strong>100%（强烈推荐）</strong><br>
+            7个维度中法国6项领先，仅伤停项瑞典略优。实力碾压态势明确。
+        </blockquote>
+
+        <h2>💡 分析要点</h2>
+        <ul>
+            <li><strong>实力碾压</strong>：法国身价€11.7亿是世界最高，瑞典€3.6亿差距超过3倍。Mbappe、Camavinga、Tchouameni等世界级球星坐镇</li>
+            <li><strong>状态火热</strong>：小组赛4-1大胜挪威展现了恐怖攻击力，球队磨合成熟</li>
+            <li><strong>交锋心理优势</strong>：近5次交锋3胜2平，2020欧国联4-2和1-0双杀瑞典，最近一次2021欧洲杯1-1平</li>
+            <li><strong>盘口支撑</strong>：让1.5球说明机构也认为法国能赢2球以上，大小球3.5球预示高进球</li>
+            <li><strong>唯一风险</strong>：法国淘汰赛偶尔慢热，瑞典防守组织不差（Isak+Kulusevski有反击能力）</li>
+        </ul>
+
+        <h2>🎯 投注建议</h2>
+        <div class="bet-card">
+            <div class="bet-row">
+                <div>
+                    <span class="bet-type-badge type-stable">稳胆</span>
+                    <strong> 法国主胜 @1.29</strong>
+                </div>
+                <div>投注 <strong>¥350</strong> | 命中盈利 <strong>+¥101.50</strong></div>
+            </div>
+            <div class="bet-row">
+                <div>
+                    <span class="bet-type-badge type-score">比分</span>
+                    <strong> 3-0 @11.0</strong>
+                </div>
+                <div>投注 <strong>¥50</strong> | 命中盈利 <strong>+¥500</strong></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 墨西哥 vs 厄瓜多尔 ========== -->
+    <div class="content" id="match2">
+        <h1>🇲🇽 墨西哥 vs 厄瓜多尔 🇪🇨</h1>
+
+        <div class="match-header">
+            <div class="team-block">
+                <div class="team-flag">🇲🇽</div>
+                <div class="team-name">墨西哥</div>
+                <div class="team-rank">FIFA #14 | 身价 €3.0亿</div>
+            </div>
+            <div class="vs-text">VS</div>
+            <div class="team-block">
+                <div class="team-flag">🇪🇨</div>
+                <div class="team-name">厄瓜多尔</div>
+                <div class="team-rank">FIFA #28 | 身价 €3.45亿</div>
+            </div>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="label">赛事</div>
+                <div class="value">32强淘汰赛</div>
+            </div>
+            <div class="info-card">
+                <div class="label">北京时间</div>
+                <div class="value">7/1 09:00</div>
+            </div>
+            <div class="info-card">
+                <div class="label">盘口</div>
+                <div class="value">墨西哥让0.5球</div>
+            </div>
+            <div class="info-card">
+                <div class="label">大小球</div>
+                <div class="value" style="color:#ef4444;">1.5 ⚠️</div>
+            </div>
+        </div>
+
+        <h2>📊 7维度评分对比</h2>
+        <table class="md-table">
+            <tr>
+                <th>维度</th>
+                <th>权重</th>
+                <th>🇲🇽 墨西哥</th>
+                <th>得分条</th>
+                <th>🇪🇨 厄瓜多尔</th>
+                <th>分析要点</th>
+            </tr>
+            <tr>
+                <td>球队实力</td>
+                <td>25%</td>
+                <td>65</td>
+                <td><span class="score-bar bar-home" style="width:65px"></span></td>
+                <td><strong>68</strong></td>
+                <td>厄瓜多尔身价略高(Caicedo €80M)，墨西哥排名更高但下滑</td>
+            </tr>
+            <tr>
+                <td>近期状态</td>
+                <td>20%</td>
+                <td>45</td>
+                <td><span class="score-bar bar-home" style="width:45px"></span></td>
+                <td><strong>70</strong></td>
+                <td>墨西哥2024美洲杯小组出局；厄瓜多尔南美预选赛第3名</td>
+            </tr>
+            <tr>
+                <td>历史交锋</td>
+                <td>15%</td>
+                <td><strong>70</strong></td>
+                <td><span class="score-bar bar-home" style="width:70px"></span></td>
+                <td>35</td>
+                <td>历史墨西哥18胜7平7负占优，但2024美洲杯厄3-1赢了</td>
+            </tr>
+            <tr>
+                <td>伤停影响</td>
+                <td>15%</td>
+                <td>60</td>
+                <td><span class="score-bar bar-home" style="width:60px"></span></td>
+                <td><strong>65</strong></td>
+                <td>墨西哥Quiñones十字韧带伤、Lozano反复肌肉伤</td>
+            </tr>
+            <tr>
+                <td>主客场</td>
+                <td>10%</td>
+                <td>95</td>
+                <td><span class="score-bar bar-home" style="width:95px"></span></td>
+                <td>95</td>
+                <td>中立场</td>
+            </tr>
+            <tr>
+                <td>赔率信号</td>
+                <td>10%</td>
+                <td>50</td>
+                <td><span class="score-bar bar-home" style="width:50px"></span></td>
+                <td><strong>55</strong></td>
+                <td>赔率极度均衡，机构也认为势均力敌</td>
+            </tr>
+            <tr>
+                <td>其他因素</td>
+                <td>5%</td>
+                <td>55</td>
+                <td><span class="score-bar bar-home" style="width:55px"></span></td>
+                <td><strong>60</strong></td>
+                <td>淘汰赛谨慎，厄瓜多尔防守型踢法更适应</td>
+            </tr>
+            <tr style="background:#fffbeb; font-weight:bold;">
+                <td>加权总分</td>
+                <td>100%</td>
+                <td style="font-size:1.2rem;">62.0</td>
+                <td></td>
+                <td style="font-size:1.2rem;">64.0</td>
+                <td>差距仅 2.0 分</td>
+            </tr>
+        </table>
+
+        <blockquote>
+            信心指数：<strong>10%（不建议作为稳胆，但平局有价值）</strong><br>
+            7维评分几乎完全一致，高度均衡赛事。大小球1.5是今日最低，预示沉闷闷战。
+        </blockquote>
+
+        <h2>💡 平局价值分析</h2>
+        <ul>
+            <li><strong>大小球1.5极低</strong>：机构预期进球极少，这种比赛平局概率远高于正常水平（约33% vs 正常25%）</li>
+            <li><strong>赔率2.90有价值</strong>：隐含概率33.1%，我判断平局概率35%，正期望值</li>
+            <li><strong>厄瓜多尔防守极强</strong>：Caicedo+Pacho+Hincapie组成的中后场为南美区最佳之一</li>
+            <li><strong>墨西哥进攻乏力</strong>：2024美洲杯小组出局，缺乏有效进攻手段</li>
+            <li><strong>淘汰赛保守</strong>：两队都不愿冒险，常规时间互交白卷概率大</li>
+        </ul>
+
+        <h2>🎯 投注建议</h2>
+        <div class="bet-card">
+            <div class="bet-row">
+                <div>
+                    <span class="bet-type-badge type-stable">稳胆/价值</span>
+                    <strong> 平局 @2.90</strong>
+                </div>
+                <div>投注 <strong>¥200</strong> | 命中盈利 <strong>+¥380</strong></div>
+            </div>
+            <div class="bet-row">
+                <div>
+                    <span class="bet-type-badge type-score">比分</span>
+                    <strong> 1-1 @6.50</strong>
+                </div>
+                <div>投注 <strong>¥50</strong> | 命中盈利 <strong>+¥275</strong></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 科特迪瓦 vs 挪威 ========== -->
+    <div class="content" id="match3">
+        <h1>🇨🇮 科特迪瓦 vs 挪威 🇳🇴</h1>
+
+        <div class="match-header">
+            <div class="team-block">
+                <div class="team-flag">🇨🇮</div>
+                <div class="team-name">科特迪瓦</div>
+                <div class="team-rank">FIFA #48 | 身价 €3.3亿</div>
+            </div>
+            <div class="vs-text">VS</div>
+            <div class="team-block">
+                <div class="team-flag">🇳🇴</div>
+                <div class="team-name">挪威</div>
+                <div class="team-rank">FIFA #39 | 身价 €4.4亿</div>
+            </div>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="label">赛事</div>
+                <div class="value">32强淘汰赛</div>
+            </div>
+            <div class="info-card">
+                <div class="label">北京时间</div>
+                <div class="value">7/1 01:00</div>
+            </div>
+            <div class="info-card">
+                <div class="label">盘口</div>
+                <div class="value">挪威让0.5球</div>
+            </div>
+            <div class="info-card">
+                <div class="label">大小球</div>
+                <div class="value">2.5</div>
+            </div>
+        </div>
+
+        <h2>📊 7维度评分对比</h2>
+        <table class="md-table">
+            <tr>
+                <th>维度</th>
+                <th>权重</th>
+                <th>🇨🇮 科特迪瓦</th>
+                <th>得分条</th>
+                <th>🇳🇴 挪威</th>
+                <th>分析要点</th>
+            </tr>
+            <tr>
+                <td>球队实力</td>
+                <td>25%</td>
+                <td>55</td>
+                <td><span class="score-bar bar-home" style="width:55px"></span></td>
+                <td><strong>72</strong></td>
+                <td>Haaland+Odegaard身价碾压，但科特迪瓦整体不弱</td>
+            </tr>
+            <tr>
+                <td>近期状态</td>
+                <td>20%</td>
+                <td>60</td>
+                <td><span class="score-bar bar-home" style="width:60px"></span></td>
+                <td><strong>65</strong></td>
+                <td>挪威1-4输法国暴露防守问题；科特迪瓦2-0赢Curacao</td>
+            </tr>
+            <tr>
+                <td>历史交锋</td>
+                <td>15%</td>
+                <td>50</td>
+                <td><span class="score-bar bar-home" style="width:50px"></span></td>
+                <td>50</td>
+                <td>两队从未交手，历史数据空白</td>
+            </tr>
+            <tr>
+                <td>伤停影响</td>
+                <td>15%</td>
+                <td>70</td>
+                <td><span class="score-bar bar-home" style="width:70px"></span></td>
+                <td><strong>85</strong></td>
+                <td>科特迪瓦Haller癌症恢复中；挪威全员健康</td>
+            </tr>
+            <tr>
+                <td>主客场</td>
+                <td>10%</td>
+                <td>95</td>
+                <td><span class="score-bar bar-home" style="width:95px"></span></td>
+                <td>95</td>
+                <td>中立场</td>
+            </tr>
+            <tr>
+                <td>赔率信号</td>
+                <td>10%</td>
+                <td>40</td>
+                <td><span class="score-bar bar-home" style="width:40px"></span></td>
+                <td><strong>65</strong></td>
+                <td>客胜2.10被看好，但平局3.45也有吸引力</td>
+            </tr>
+            <tr>
+                <td>其他因素</td>
+                <td>5%</td>
+                <td><strong>60</strong></td>
+                <td><span class="score-bar bar-home" style="width:60px"></span></td>
+                <td>50</td>
+                <td>科特迪瓦卫冕非洲杯冠军底蕴深；挪威1998后首次大赛</td>
+            </tr>
+            <tr style="background:#f0f9ff; font-weight:bold;">
+                <td>加权总分</td>
+                <td>100%</td>
+                <td style="font-size:1.2rem;">60.0</td>
+                <td></td>
+                <td style="font-size:1.2rem;">70.2</td>
+                <td>差距 10.2 分</td>
+            </tr>
+        </table>
+
+        <blockquote>
+            信心指数：<strong>51%（谨慎推荐）</strong><br>
+            挪威实力占优但优势不大。关键分歧在"大赛经验"维度：科特迪瓦底蕴深，挪威极缺。
+        </blockquote>
+
+        <h2>💡 平局价值分析</h2>
+        <ul>
+            <li><strong>挪威大赛经验极缺</strong>：1998年后首次参加大赛，球员缺乏淘汰赛高压经验</li>
+            <li><strong>科特迪瓦大赛底蕴</strong>：2023年卫冕非洲杯冠军，大赛淘汰赛心态成熟</li>
+            <li><strong>挪威防守漏洞</strong>：1-4惨败法国说明后防有问题，但科特迪瓦攻击力不如法国</li>
+            <li><strong>Haaland依赖症</strong>：挪威进攻过度依赖Haaland一人，科特迪瓦可集中防守</li>
+            <li><strong>淘汰赛保守</strong>：两队都输不起，常规时间谨慎踢法概率高</li>
+            <li><strong>赔率3.45有价值</strong>：隐含概率27.7%，淘汰赛平局实际概率约28-33%</li>
+        </ul>
+
+        <h2>🎯 投注建议</h2>
+        <div class="bet-card">
+            <div class="bet-row">
+                <div>
+                    <span class="bet-type-badge type-stable">价值注</span>
+                    <strong> 平局 @3.45</strong>
+                </div>
+                <div>投注 <strong>¥150</strong> | 命中盈利 <strong>+¥367.50</strong></div>
+            </div>
+            <div class="bet-row">
+                <div>
+                    <span class="bet-type-badge type-score">比分</span>
+                    <strong> 1-1 @7.00</strong>
+                </div>
+                <div>投注 <strong>¥50</strong> | 命中盈利 <strong>+¥300</strong></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 串关分析 ========== -->
+    <div class="content" id="parlay">
+        <h1>🔗 串关分析</h1>
+
+        <h2>方案选择</h2>
+        <table class="md-table">
+            <tr>
+                <th>串关方案</th>
+                <th>组合赔率</th>
+                <th>联合概率</th>
+                <th>期望EV</th>
+                <th>推荐</th>
+            </tr>
+            <tr>
+                <td><strong>法国胜 + 墨厄平</strong></td>
+                <td>1.29 × 2.90 = <strong>3.74</strong></td>
+                <td>88% × 35% = <strong>31%</strong></td>
+                <td class="ev-positive">+¥23.9 (+15.9%)</td>
+                <td>✅ 采用</td>
+            </tr>
+            <tr>
+                <td>法国胜 + 挪威胜</td>
+                <td>1.29 × 2.10 = 2.71</td>
+                <td>88% × 55% = 48%</td>
+                <td class="ev-negative">-¥8.2 (-5.5%)</td>
+                <td>❌ 不推荐</td>
+            </tr>
+            <tr>
+                <td>法国胜 + 科挪平</td>
+                <td>1.29 × 3.45 = 4.45</td>
+                <td>88% × 30% = 26%</td>
+                <td class="ev-positive">+¥10.6 (+7.1%)</td>
+                <td>备选</td>
+            </tr>
+        </table>
+
+        <blockquote>
+            <strong>选择逻辑</strong>：法国胜+墨厄平 串关EV最高（+15.9%），法国稳胆（88%）带动平局价值注（35%），回报3.74合理。
+        </blockquote>
+
+        <div class="bet-card">
+            <div class="bet-row">
+                <div>
+                    <span class="bet-type-badge type-parlay">2串1</span>
+                    <strong> 法国主胜 + 墨厄平局 @3.74</strong>
+                </div>
+                <div>投注 <strong>¥150</strong> | 命中盈利 <strong>+¥411</strong></div>
+            </div>
+            <p style="margin:10px 0; color:#475569;">
+                逻辑：法国胜几乎是确定性事件（88%），串上墨厄平局（35%）后联合概率仍有31%，
+                赔率3.74提供了不错的回报。相比串挪威胜（48%概率但赔率仅2.71），这个方案EV更高。
+            </p>
+        </div>
+    </div>
+
+    <!-- ========== 预期收益 ========== -->
+    <div class="content" id="ev">
+        <h1>💰 预期收益分析</h1>
+
+        <h2>各注期望值（EV）</h2>
+        <table class="md-table">
+            <tr>
+                <th>投注</th>
+                <th>类型</th>
+                <th>赔率</th>
+                <th>金额</th>
+                <th>我的概率</th>
+                <th>命中盈利</th>
+                <th>期望EV</th>
+            </tr>
+            <tr>
+                <td>法国主胜</td>
+                <td><span class="bet-type-badge type-stable">稳胆</span></td>
+                <td>1.29</td>
+                <td>¥350</td>
+                <td>88%</td>
+                <td>+¥101.50</td>
+                <td class="ev-positive">+¥47.3</td>
+            </tr>
+            <tr>
+                <td>墨厄平局</td>
+                <td><span class="bet-type-badge type-stable">稳胆</span></td>
+                <td>2.90</td>
+                <td>¥200</td>
+                <td>35%</td>
+                <td>+¥380.00</td>
+                <td class="ev-positive">+¥3.0</td>
+            </tr>
+            <tr>
+                <td>科挪平局</td>
+                <td><span class="bet-type-badge type-stable">稳胆</span></td>
+                <td>3.45</td>
+                <td>¥150</td>
+                <td>30%</td>
+                <td>+¥367.50</td>
+                <td class="ev-positive">+¥5.2</td>
+            </tr>
+            <tr>
+                <td>法胜+墨平</td>
+                <td><span class="bet-type-badge type-parlay">串关</span></td>
+                <td>3.74</td>
+                <td>¥150</td>
+                <td>31%</td>
+                <td>+¥411.00</td>
+                <td class="ev-positive">+¥23.9</td>
+            </tr>
+            <tr>
+                <td>法国3-0</td>
+                <td><span class="bet-type-badge type-score">比分</span></td>
+                <td>11.0</td>
+                <td>¥50</td>
+                <td>10%</td>
+                <td>+¥500.00</td>
+                <td class="ev-positive">+¥5.0</td>
+            </tr>
+            <tr>
+                <td>墨厄1-1</td>
+                <td><span class="bet-type-badge type-score">比分</span></td>
+                <td>6.50</td>
+                <td>¥50</td>
+                <td>13%</td>
+                <td>+¥275.00</td>
+                <td class="ev-negative">-¥7.8</td>
+            </tr>
+            <tr>
+                <td>科挪1-1</td>
+                <td><span class="bet-type-badge type-score">比分</span></td>
+                <td>7.00</td>
+                <td>¥50</td>
+                <td>11%</td>
+                <td>+¥300.00</td>
+                <td class="ev-negative">-¥11.5</td>
+            </tr>
+            <tr style="background:#f0fdf4; font-weight:bold;">
+                <td colspan="5">合计</td>
+                <td>+¥2,335</td>
+                <td class="ev-positive">+¥65.1</td>
+            </tr>
+        </table>
+
+        <h2>场景分析</h2>
+
+        <div class="scenario-card good">
+            <strong>🟢 场景3：3场稳胆全中（概率~9%）</strong>
+            <div>命中：法国(+¥102) + 墨厄平(+¥380) + 科挪平(+¥368)</div>
+            <div>未中：串关+3注比分 (-¥300)</div>
+            <div><strong>净盈亏：+¥549</strong></div>
+        </div>
+
+        <div class="scenario-card neutral">
+            <strong>🟡 场景2：法国 + 墨厄平命中（概率~31%）</strong>
+            <div>命中：法国主胜(+¥102) + 墨厄平局(+¥380)</div>
+            <div>未中：其余5注 (-¥450)</div>
+            <div><strong>净盈亏：+¥32</strong></div>
+        </div>
+
+        <div class="scenario-card bad">
+            <strong>🔴 场景1：仅法国命中（概率~57%）</strong>
+            <div>命中：法国主胜(+¥102)</div>
+            <div>未中：其余6注 (-¥650)</div>
+            <div><strong>净盈亏：-¥548</strong></div>
+        </div>
+
+        <div class="scenario-card bad">
+            <strong>⚫ 最差场景：全挂（概率~5%）</strong>
+            <div><strong>净亏损：-¥1,000</strong></div>
+        </div>
+
+        <h2>分类型汇总</h2>
+        <table class="md-table">
+            <tr>
+                <th>类型</th>
+                <th>投入</th>
+                <th>期望EV</th>
+                <th>ROI</th>
+                <th>说明</th>
+            </tr>
+            <tr>
+                <td><span class="bet-type-badge type-stable">稳胆</span></td>
+                <td>¥700</td>
+                <td class="ev-positive">+¥55.6</td>
+                <td class="ev-positive">+7.9%</td>
+                <td>正EV来源，法国保底+两个平局价值注</td>
+            </tr>
+            <tr>
+                <td><span class="bet-type-badge type-parlay">串关</span></td>
+                <td>¥150</td>
+                <td class="ev-positive">+¥23.9</td>
+                <td class="ev-positive">+15.9%</td>
+                <td>最高ROI，法国稳胆带动串关可信度</td>
+            </tr>
+            <tr>
+                <td><span class="bet-type-badge type-score">比分</span></td>
+                <td>¥150</td>
+                <td class="ev-negative">-¥14.3</td>
+                <td class="ev-negative">-9.5%</td>
+                <td>彩票性质，小博大，法国3-0是唯一正EV</td>
+            </tr>
+        </table>
+
+        <div class="summary-box" style="margin-top:30px;">
+            <h2>📌 结论</h2>
+            <div class="summary-stat">
+                <span>总期望值 (EV)</span>
+                <span class="ev-positive" style="font-size:1.2rem;">+¥65.1 (+6.5%)</span>
+            </div>
+            <div class="summary-stat">
+                <span>市场隐含EV（扣除5%利润率）</span>
+                <span class="ev-negative">-¥47.6 (-4.8%)</span>
+            </div>
+            <div class="summary-stat">
+                <span>7维分析附加价值</span>
+                <span class="ev-positive">+¥112.7</span>
+            </div>
+            <p style="margin-top:15px;">
+                <strong>核心逻辑</strong>：法国是保底（+¥101.5期望），两个平局是利润来源（+¥8.2期望），
+                串关是效率放大器（+¥23.9期望），比分是彩票（-¥14.3期望但金额可控）。
+                长期正EV +6.5% 的策略是可持续的。
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        FIFA Analyzer Phase 2 | 7维分析模型驱动 | 生成时间: 2026-07-01 00:00 UTC+8<br>
+        ⚠️ 免责声明：本报告仅供分析参考，不构成任何投注建议。请理性对待，量力而行。
+    </footer>
+</div>
+
+<script>
+// Simple tab navigation
+document.querySelectorAll('.nav-tab').forEach(tab => {
+    tab.addEventListener('click', function(e) {
+        document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+        this.classList.add('active');
+    });
+});
+</script>
+</body>
+</html>
