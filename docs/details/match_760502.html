@@ -1,0 +1,253 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>法国 vs 瑞典</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f0f4f8;color:#1e293b;line-height:1.5}
+.container{max-width:1500px;margin:0 auto;padding:14px 18px}
+
+/* ===== 索引页 ===== */
+.header{text-align:center;padding:18px 30px 14px;background:linear-gradient(135deg,#e0f2fe,#bae6fd,#7dd3fc);border-radius:14px;margin-bottom:14px}
+.header h1{font-size:1.5rem;font-weight:700;color:#0c4a6e}
+.header .sub{color:#0369a1;font-size:.8rem}
+.stats{display:flex;justify-content:center;gap:14px;margin-top:12px;flex-wrap:wrap}
+.stat-card{background:white;border-radius:10px;padding:8px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.stat-num{font-size:1.3rem;font-weight:700;color:#0284c7}
+.stat-label{font-size:.7rem;color:#64748b}
+
+.filter-bar{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;align-items:center;background:white;border-radius:12px;padding:10px 16px;box-shadow:0 1px 4px rgba(0,0,0,.03)}
+.filter-bar .lb{font-size:.8rem;color:#64748b;font-weight:600}
+.filter-bar select{padding:7px 12px;border:1px solid #e2e8f0;border-radius:8px;background:#f8fafc;color:#334155;font-size:.82rem;outline:none}
+
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.card{background:white;border-radius:12px;padding:16px 18px;box-shadow:0 1px 6px rgba(0,0,0,.03);border:1px solid #e2e8f0;transition:all .2s;cursor:pointer}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.08);border-color:#3b82f6}
+.card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.group-badge{display:inline-flex;gap:3px;background:linear-gradient(135deg,#3b82f6,#8b5cf6);color:white;padding:3px 10px;border-radius:16px;font-size:.75rem;font-weight:700}
+.match-time{color:#64748b;font-size:.78rem}
+.teams-row{display:flex;align-items:center;justify-content:center;gap:10px;margin:12px 0}
+.team-block{flex:1;text-align:center}
+.team-flag{font-size:1.6rem}
+.team-name{font-weight:700;font-size:.92rem}
+.vs-text{font-size:.9rem;color:#cbd5e1;font-weight:800}
+.odds-bar{display:flex;height:6px;border-radius:3px;overflow:hidden;background:#e2e8f0;margin-top:8px}
+.odds-bar div{height:100%}
+.odds-legend{display:flex;justify-content:space-between;margin-top:5px;font-size:.7rem;color:#64748b}
+.pred-box{background:#f8fafc;border-radius:10px;padding:12px;margin-top:10px}
+.pred-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;font-size:.8rem}
+.pred-label{color:#64748b}
+.pred-val{font-weight:700;color:#1e293b}
+.conf-badge{padding:2px 10px;border-radius:12px;font-size:.74rem;font-weight:600}
+.conf-5{background:#22c55e1a;color:#15803d}
+.conf-4{background:#3b82f61a;color:#1d4ed8}
+.conf-3{background:#f59e0b1a;color:#b45309}
+.detail-link{display:block;text-align:center;margin-top:12px;padding:9px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;color:#2563eb;text-decoration:none;font-weight:600;font-size:.8rem}
+.detail-link:hover{background:#dbeafe}
+.result-badge{font-size:.72rem;padding:2px 8px;border-radius:10px;font-weight:600}
+.result-hit{background:#dcfce7;color:#15803d}
+.result-miss{background:#fef2f2;color:#dc2626}
+.result-pending{background:#f0f9ff;color:#0284c7}
+
+@media(max-width:1200px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){.grid{grid-template-columns:1fr}}
+
+/* ===== 详情页 ===== */
+.d-back{display:inline-flex;align-items:center;gap:4px;color:#3b82f6;text-decoration:none;font-size:.78rem;margin-bottom:8px;font-weight:500}
+.d-back:hover{color:#1d4ed8}
+
+/* Hero区 */
+.d-hero{background:linear-gradient(135deg,#e0f2fe,#bae6fd,#7dd3fc);border-radius:14px;padding:18px 28px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.d-hero-left{flex:1}
+.d-hero-title{font-size:1.5rem;font-weight:800;color:#0c4a6e;margin-bottom:6px}
+.d-hero-meta{display:flex;gap:16px;flex-wrap:wrap;font-size:.78rem;color:#0369a1}
+.d-hero-meta span{background:rgba(255,255,255,.6);padding:3px 10px;border-radius:10px}
+.d-hero-right{text-align:center;background:white;border-radius:12px;padding:14px 22px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.d-hero-score{font-size:2rem;font-weight:800;color:#1e293b}
+.d-hero-pred{font-size:.8rem;color:#64748b;margin-top:4px}
+
+/* 两栏主内容 */
+.d-main{display:flex;gap:12px}
+.d-left{flex:1.2;min-width:0}
+.d-right{flex:1;min-width:0}
+
+/* Section通用 */
+.section{background:white;border-radius:12px;padding:16px 18px;margin-bottom:10px;box-shadow:0 1px 4px rgba(0,0,0,.03)}
+.section h2{font-size:.95rem;color:#1e293b;margin-bottom:12px;padding-bottom:7px;border-bottom:1.5px solid #e2e8f0}
+.section h3{font-size:.85rem;color:#334155;margin-bottom:8px}
+
+/* 赔率Grid */
+.odds-row{display:flex;gap:8px}
+.odds-cell{flex:1;background:#f8fafc;border-radius:8px;padding:10px;text-align:center}
+.odds-cell.best{background:#eff6ff;border:1.5px solid #3b82f6}
+.odds-cell .ol{font-size:.7rem;color:#64748b}
+.odds-cell .ov{font-size:1.1rem;font-weight:800;color:#1e293b}
+.odds-cell .op{font-size:.68rem;color:#3b82f6;margin-top:2px}
+
+/* 7维度 */
+.dim-item{margin-bottom:8px;border-left:3px solid #e2e8f0;padding-left:10px}
+.dim-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:3px}
+.dim-name{font-size:.8rem;font-weight:700;color:#334155}
+.dim-scores{font-size:.75rem;color:#64748b}
+.dim-scores .s-home{color:#f59e0b;font-weight:700}
+.dim-scores .s-away{color:#6366f1;font-weight:700}
+.dim-track{display:flex;height:5px;border-radius:3px;overflow:hidden;background:#f1f5f9;margin:4px 0}
+.dim-track .t-home{background:linear-gradient(90deg,#f59e0b,#fbbf24)}
+.dim-track .t-away{background:linear-gradient(90deg,#6366f1,#8b5cf6)}
+.dim-text{font-size:.73rem;color:#64748b;line-height:1.5;margin-top:3px}
+
+/* 积分榜表格 */
+.standings-table{width:100%;border-collapse:collapse;font-size:.72rem}
+.standings-table th{background:#f1f5f9;padding:5px 6px;text-align:center;font-weight:600;color:#475569}
+.standings-table td{padding:5px 6px;text-align:center;border-bottom:1px solid #f1f5f9;color:#475569}
+.standings-table .team-col{text-align:left}
+.standings-table .hl{background:#eff6ff}
+.standings-table .hl td{color:#1d4ed8;font-weight:600}
+
+/* 近期战绩小表 */
+.form-mini{width:100%;border-collapse:collapse;font-size:.7rem;margin-bottom:8px}
+.form-mini th{background:#f8fafc;padding:3px 6px;text-align:left;font-weight:600;color:#94a3b8}
+.form-mini td{padding:3px 6px;border-bottom:1px solid #f1f5f9;color:#64748b}
+.rw{color:#22c55e;font-weight:700}
+.rd{color:#f59e0b;font-weight:700}
+.rl{color:#ef4444;font-weight:700}
+
+/* 球员对位 */
+.matchup-row{display:flex;align-items:center;gap:8px;padding:6px 10px;border-bottom:1px solid #f1f5f9;font-size:.78rem}
+.matchup-row:last-child{border-bottom:none}
+.mu-home{flex:1;text-align:right;font-weight:600;color:#f59e0b}
+.mu-vs{color:#94a3b8;font-size:.7rem}
+.mu-away{flex:1;text-align:left;font-weight:600;color:#6366f1}
+.mu-pos{font-size:.68rem;color:#94a3b8;min-width:40px;text-align:center}
+
+/* 投注建议 */
+.bet-table{width:100%;border-collapse:collapse;font-size:.76rem}
+.bet-table th{background:#f1f5f9;padding:6px 10px;text-align:left;font-weight:600;color:#475569}
+.bet-table td{padding:6px 10px;border-bottom:1px solid #f1f5f9;color:#475569}
+
+/* 备注 */
+.note-box{font-size:.75rem;color:#92400e;line-height:1.6;background:#fffbeb;border:1px solid #fcd34d;border-radius:8px;padding:10px 14px}
+
+/* 小免责 */
+.mini-disclaimer{font-size:.65rem;color:#94a3b8;text-align:center;padding:6px;background:white;border-radius:6px;margin-top:10px}
+
+@media(max-width:1000px){.d-main{flex-direction:column}}
+
+.rw{color:#22c55e;font-weight:700}
+.rd{color:#f59e0b;font-weight:700}
+.rl{color:#ef4444;font-weight:700}
+</style></head><body><div class="container">
+<a href="../index.html" class="d-back">← 返回总览</a>
+
+<!-- Hero -->
+<div class="d-hero">
+  <div class="d-hero-left">
+    <div class="d-hero-title">🇫🇷 法国  VS  瑞典 🇸🇪</div>
+    <div class="d-hero-meta">
+      <span>2026-06-30 05:00</span>
+      <span>R32组</span>
+      <span>MetLife Stadium, East Rutherford, New Jersey</span>
+    </div>
+  </div>
+  <div class="d-hero-right">
+    <div class="d-hero-score">3-0</div>
+    <div class="d-hero-pred">预测 · <strong>主胜 (法国)</strong> @ 1.27</div>
+    <div style="margin-top:6px"><span class="conf-badge conf-5" style="font-size:.78rem">⭐⭐⭐⭐⭐ 强烈推荐 · 80%</span></div>
+  </div>
+</div>
+
+<!-- 两栏主体 -->
+<div class="d-main">
+
+  <!-- 左栏 -->
+  <div class="d-left">
+
+    <!-- 赔率 + 出线形势 -->
+    <div class="section">
+      <div style="display:flex;gap:14px">
+        <div style="flex:1">
+          <h2>赔率 (DraftKings)</h2>
+          <div class="odds-row">
+            <div class="odds-cell"><div class="ol">主胜</div><div class="ov">1.27</div><div class="op">76.0%</div></div>
+            <div class="odds-cell"><div class="ol">平局</div><div class="ov">6.5</div><div class="op">14.8%</div></div>
+            <div class="odds-cell best"><div class="ol">客胜</div><div class="ov">10.5</div><div class="op">9.2%</div></div>
+          </div>
+        </div>
+        <div style="flex:1">
+          <h2>R32组积分榜</h2>
+          <table class="standings-table"><thead><tr><th>#</th><th class="team-col">球队</th><th>场</th><th>净胜</th><th>分</th></tr></thead>
+          <tbody></tbody></table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7维度 -->
+    <div class="section">
+      <h2>7维度评分分析</h2>
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:14px">
+        <div style="text-align:center;background:#f8fafc;border-radius:10px;padding:10px 18px"><div style="font-size:1.4rem;font-weight:800;color:#f59e0b">79.4</div><div style="font-size:.7rem;color:#64748b">法国</div></div>
+        <div style="flex:1;text-align:center;font-size:.75rem;color:#94a3b8">综合评分对比</div>
+        <div style="text-align:center;background:#eff6ff;border-radius:10px;padding:10px 18px"><div style="font-size:1.4rem;font-weight:800;color:#6366f1">37.8</div><div style="font-size:.7rem;color:#64748b">瑞典</div></div>
+      </div>
+      <div class="dim-item">
+<div class="dim-header"><span class="dim-name">球队实力 (权重25%)</span><span class="dim-scores"><span class="s-home">法国 95</span> · <span class="s-away">瑞典 60</span></span></div>
+<div class="dim-track"><div class="t-home" style="width:61%"></div><div class="t-away" style="width:38%"></div></div>
+<div class="dim-text">双方实力差距悬殊。法国FIFA排名2，身价法国是瑞典的多倍倍，法国球员主要效力于欧洲主流联赛，整体实力明显占优。</div></div><div class="dim-item">
+<div class="dim-header"><span class="dim-name">近期状态 (权重20%)</span><span class="dim-scores"><span class="s-home">法国 90</span> · <span class="s-away">瑞典 60</span></span></div>
+<div class="dim-track"><div class="t-home" style="width:60%"></div><div class="t-away" style="width:40%"></div></div>
+<div class="dim-text">双方近期状态接近，法国状态一般；瑞典状态一般。</div></div><div class="dim-item">
+<div class="dim-header"><span class="dim-name">历史交锋 (权重15%)</span><span class="dim-scores"><span class="s-home">法国 85</span> · <span class="s-away">瑞典 25</span></span></div>
+<div class="dim-track"><div class="t-home" style="width:77%"></div><div class="t-away" style="width:22%"></div></div>
+<div class="dim-text">历史交锋中法国占优，过往记录明显偏向法国一方。</div></div><div class="dim-item">
+<div class="dim-header"><span class="dim-name">伤停影响 (权重15%)</span><span class="dim-scores"><span class="s-home">法国 70</span> · <span class="s-away">瑞典 55</span></span></div>
+<div class="dim-track"><div class="t-home" style="width:56%"></div><div class="t-away" style="width:44%"></div></div>
+<div class="dim-text">双方目前均无重大伤停报告，阵容较为完整。</div></div><div class="dim-item">
+<div class="dim-header"><span class="dim-name">主客场 (权重10%)</span><span class="dim-scores"><span class="s-home">法国 50</span> · <span class="s-away">瑞典 50</span></span></div>
+<div class="dim-track"><div class="t-home" style="width:50%"></div><div class="t-away" style="width:50%"></div></div>
+<div class="dim-text">世界杯为中立场，无明显主客场优势。</div></div><div class="dim-item">
+<div class="dim-header"><span class="dim-name">赔率信号 (权重10%)</span><span class="dim-scores"><span class="s-home">法国 95</span> · <span class="s-away">瑞典 15</span></span></div>
+<div class="dim-track"><div class="t-home" style="width:86%"></div><div class="t-away" style="width:13%"></div></div>
+<div class="dim-text">赔率偏向法国（1.27），隐含概率79%，机构较为看好。</div></div><div class="dim-item">
+<div class="dim-header"><span class="dim-name">其他因素 (权重5%)</span><span class="dim-scores"><span class="s-home">法国 60</span> · <span class="s-away">瑞典 50</span></span></div>
+<div class="dim-track"><div class="t-home" style="width:54%"></div><div class="t-away" style="width:45%"></div></div>
+<div class="dim-text">比赛动机、天气、裁判等方面无明显倾向。</div></div>
+    </div>
+
+  </div>
+
+  <!-- 右栏 -->
+  <div class="d-right">
+
+    <!-- 近期战绩 -->
+    <div class="section">
+      <h2>近期战绩</h2>
+      <div><h3>🇫🇷 法国</h3>
+        <table class="form-mini"><thead><tr><th>对手</th><th>比分</th><th>R</th></tr></thead><tbody><tr><td>伊拉克</td><td>4-0</td><td class="rw">W</td></tr><tr><td>塞内加尔</td><td>3-1</td><td class="rw">W</td></tr><tr><td>挪威</td><td>3-0</td><td class="rw">W</td></tr></tbody></table></div>
+      <div style="margin-top:10px"><h3>🇸🇪 瑞典</h3>
+        <table class="form-mini"><thead><tr><th>对手</th><th>比分</th><th>R</th></tr></thead><tbody><tr><td>日本</td><td>2-2</td><td class="rd">D</td></tr><tr><td>突尼斯</td><td>4-1</td><td class="rw">W</td></tr><tr><td>荷兰</td><td>1-4</td><td class="rl">L</td></tr></tbody></table></div>
+    </div>
+
+    <!-- 投注建议 -->
+    <div class="section">
+      <h2>投注建议</h2>
+      <table class="bet-table"><thead><tr><th>玩法</th><th>推荐</th><th>赔率</th></tr></thead>
+      <tbody>
+        <tr><td><strong>胜负</strong></td><td><strong>主胜 (法国)</strong></td><td>1.27</td></tr>
+        <tr><td><strong>比分</strong></td><td>3-0</td><td>-</td></tr>
+        <tr><td>投注金额</td><td colspan="2">CNY 3,333.33</td></tr>
+      </tbody></table>
+    </div>
+
+    <!-- 核心对位 -->
+    <div class="section">
+      <h2>核心对位</h2>
+      <div class="matchup-row"><span class="mu-home">姆巴佩</span><span class="mu-pos">中场</span><span class="mu-vs">VS</span><span class="mu-away">伊萨克</span></div><div class="matchup-row"><span class="mu-home">登贝莱</span><span class="mu-pos">后卫</span><span class="mu-vs">VS</span><span class="mu-away">哲凯赖什</span></div><div class="matchup-row"><span class="mu-home">萨利巴</span><span class="mu-pos">前锋</span><span class="mu-vs">VS</span><span class="mu-away">库卢塞夫斯基</span></div>
+    </div>
+
+    <!-- 备注 -->
+    <div class="section">
+      <h2>备注</h2>
+      1/16决赛。法国I组第1出线(9分,进10球)，瑞典F组第3出线(4分)。历史交锋法国18战11胜。法国实力碾压，姆巴佩领衔。
+    </div>
+
+  </div>
+</div>
+
+<div class="mini-disclaimer">免责：本分析仅供参考娱乐，不构成投注建议。数据来源：ESPN API (DraftKings)</div>
+</div></body></html>

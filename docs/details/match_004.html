@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>库拉索 vs 科特迪瓦 - 分析报告</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #3b82f6;
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .back-link:hover {
+            color: #1d4ed8;
+        }
+
+        .match-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .team-name {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #1e293b;
+        }
+
+        .vs {
+            font-size: 1.5rem;
+            color: #94a3b8;
+        }
+
+        .match-meta {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .meta-item {
+            text-align: center;
+        }
+
+        .meta-label {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        .meta-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .group-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .content {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .content h1 {
+            font-size: 1.8rem;
+            color: #1e293b;
+            margin: 30px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .content h2 {
+            font-size: 1.4rem;
+            color: #334155;
+            margin: 25px 0 15px;
+        }
+
+        .content h3 {
+            font-size: 1.2rem;
+            color: #475569;
+            margin: 20px 0 10px;
+        }
+
+        .content p {
+            margin: 10px 0;
+            color: #475569;
+        }
+
+        .content strong {
+            color: #1e293b;
+        }
+
+        .md-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+
+        .md-table th {
+            background: #f1f5f9;
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+            color: #334155;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .md-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e2e8f0;
+            color: #475569;
+        }
+
+        .md-table tr:hover {
+            background: #f8fafc;
+        }
+
+        .content ul {
+            margin: 10px 0;
+            padding-left: 25px;
+        }
+
+        .content li {
+            margin: 5px 0;
+            color: #475569;
+        }
+
+        .content pre {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        .content code {
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: #e11d48;
+        }
+
+        .content pre code {
+            background: transparent;
+            padding: 0;
+            color: inherit;
+        }
+
+        .content blockquote {
+            border-left: 4px solid #3b82f6;
+            padding: 10px 20px;
+            margin: 15px 0;
+            background: #eff6ff;
+            color: #1e40af;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .content hr {
+            border: none;
+            border-top: 1px solid #e2e8f0;
+            margin: 30px 0;
+        }
+
+        .prediction-box {
+            background: linear-gradient(135deg, #eff6ff, #f0fdf4);
+            border: 1px solid #bfdbfe;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .prediction-score {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #1e293b;
+            margin: 10px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .team-name {
+                font-size: 1.3rem;
+            }
+
+            .md-table {
+                font-size: 0.85rem;
+            }
+
+            .md-table th, .md-table td {
+                padding: 8px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="../index.html" class="back-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                返回赛程总览
+            </a>
+
+            <div class="match-title">
+                <span class="team-name">库拉索</span>
+                <span class="vs">VS</span>
+                <span class="team-name">科特迪瓦</span>
+            </div>
+
+            <div class="match-meta">
+                <div class="meta-item">
+                    <div class="meta-label">比赛时间</div>
+                    <div class="meta-value">2026-06-26</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">分组</div>
+                    <div class="meta-value"><span class="group-badge">E组</span></div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">场地</div>
+                    <div class="meta-value">待定</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="content">
+            <h1>2026世界杯单场预测报告：库拉索 vs 科特迪瓦</h1>
+
+<p>> 分析时间：2026-06-25</p>
+<p>> 比赛时间：2026-06-26 04:00 (北京时间)</p>
+
+<hr>
+
+<h2>比赛基本信息</h2>
+
+<table class="md-table"><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td><strong>比赛</strong></td><td>库拉索 (Curaçao) vs 科特迪瓦 (Ivory Coast)</td></tr><tr><td><strong>时间</strong></td><td>2026-06-26 04:00 (北京时间，周四凌晨)</td></tr><tr><td><strong>赛事</strong></td><td>2026 FIFA世界杯小组赛 E组 第3轮</td></tr><tr><td><strong>场地</strong></td><td>Lincoln Financial Field, Philadelphia (费城林肯金融球场)</td></tr><tr><td><strong>容量</strong></td><td>69,796人</td></tr></tbody></table>
+<hr>
+
+<h2>E组积分榜 (截至第2轮)</h2>
+
+<table class="md-table"><thead><tr><th>排名</th><th>球队</th><th>场</th><th>胜</th><th>平</th><th>负</th><th>进球</th><th>失球</th><th>净胜</th><th>积分</th><th>出线状态</th></tr></thead><tbody><tr><td>1</td><td>德国</td><td>2</td><td>2</td><td>0</td><td>0</td><td>9</td><td>2</td><td>+7</td><td><strong>6</strong></td><td>已出线</td></tr><tr><td>2</td><td>科特迪瓦</td><td>2</td><td>1</td><td>0</td><td>1</td><td>2</td><td>2</td><td>0</td><td><strong>3</strong></td><td>已出线</td></tr><tr><td>3</td><td>厄瓜多尔</td><td>2</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>-1</td><td><strong>1</strong></td><td>理论可能</td></tr><tr><td>4</td><td>库拉索</td><td>2</td><td>0</td><td>1</td><td>1</td><td>1</td><td>7</td><td>-6</td><td><strong>1</strong></td><td>已淘汰</td></tr></tbody></table>
+<strong>出线形势分析</strong>：
+<ul><li>库拉索已被淘汰，本场为荣誉而战</li>
+<li>科特迪瓦已确保出线，可能轮换主力备战淘汰赛</li>
+<li>厄瓜多尔仍有理论出线可能，需看本场结果</li>
+</ul>
+<hr>
+
+<h2>赔率数据</h2>
+
+<h3>欧赔 (1X2)</h3>
+
+<table class="md-table"><thead><tr><th>结果</th><th>赔率</th><th>隐含概率</th></tr></thead><tbody><tr><td>主胜 (库拉索)</td><td>18.00</td><td>5.3%</td></tr><tr><td>平局</td><td>8.00</td><td>11.9%</td></tr><tr><td><strong>客胜 (科特迪瓦)</strong></td><td><strong>1.15</strong></td><td><strong>82.8%</strong></td></tr></tbody></table>
+<ul><li>利润率：5.0%</li>
+<li>隐含概率总和：100%</li>
+</ul>
+<h3>让球盘 (亚盘)</h3>
+
+<table class="md-table"><thead><tr><th>盘口</th><th>赔率</th></tr></thead><tbody><tr><td>主让2.5球 (+2.5)</td><td>1.87</td></tr><tr><td><strong>客让2.5球 (-2.5)</strong></td><td><strong>1.93</strong></td></tr></tbody></table>
+<h3>大小球</h3>
+
+<table class="md-table"><thead><tr><th>盘口</th><th>赔率</th></tr></thead><tbody><tr><td>大球 (>3.5)</td><td>2.20</td></tr><tr><td><strong>小球 (<3.5)</strong></td><td><strong>1.67</strong></td></tr></tbody></table>
+<hr>
+
+<h2>7维度评分分析</h2>
+
+<h3>维度1: 球队实力 (权重25%)</h3>
+
+<table class="md-table"><thead><tr><th>指标</th><th>库拉索</th><th>科特迪瓦</th></tr></thead><tbody><tr><td>FIFA排名</td><td>82-84位</td><td>38位</td></tr><tr><td>球队身价</td><td>€15-18M</td><td>€235-245M</td></tr><tr><td>身价倍数</td><td>1x</td><td><strong>13.6x</strong></td></tr><tr><td>核心球员</td><td>Leandro Bacuna, Juninho Bacuna, Cuco Martina</td><td>Seko Fofana (€25M), Simon Adingra (€25M), Evan Ndicka (€20M), Franck Kessié (€12M)</td></tr><tr><td>联赛分布</td><td>荷甲/比甲为主</td><td>英超/意甲/德甲/西甲</td></tr><tr><td><strong>本维度得分</strong></td><td><strong>25分</strong></td><td><strong>90分</strong></td></tr></tbody></table>
+<strong>分析</strong>: 双方实力差距悬殊。科特迪瓦身价是库拉索的13倍以上，拥有多名效力于欧洲顶级联赛的球星。库拉索球员主要来自荷甲、比甲等二流联赛，整体实力差距明显。
+
+<hr>
+
+<h3>维度2: 近期状态 (权重20%)</h3>
+
+<p>#### 库拉索 近5场战绩</p>
+
+<table class="md-table"><thead><tr><th>日期</th><th>对手</th><th>比分</th><th>赛事</th><th>结果</th><th>评价</th></tr></thead><tbody><tr><td>03-31</td><td>@澳大利亚</td><td>1-5</td><td>友谊赛</td><td>惨败</td><td>防守崩溃</td></tr><tr><td>05-30</td><td>@苏格兰</td><td>1-4</td><td>友谊赛</td><td>惨败</td><td>防线漏洞百出</td></tr><tr><td>06-07</td><td>vs阿鲁巴</td><td>4-0</td><td>友谊赛</td><td>大胜</td><td>对手实力弱</td></tr><tr><td>06-14</td><td>@德国</td><td>1-7</td><td>世界杯</td><td>惨败</td><td>被血洗</td></tr><tr><td>06-21</td><td>@厄瓜多尔</td><td>0-0</td><td>世界杯</td><td>平</td><td>防守有改善</td></tr></tbody></table>
+<strong>统计</strong>: 0胜1平4负 | 进6球 | 失17球 | 净胜-11
+
+<strong>状态评价</strong>: 极差。面对强队防守完全崩溃，仅能勉强逼平同级别球队。
+
+<p>#### 科特迪瓦 近5场战绩</p>
+
+<table class="md-table"><thead><tr><th>日期</th><th>对手</th><th>比分</th><th>赛事</th><th>结果</th><th>评价</th></tr></thead><tbody><tr><td>03-28</td><td>@韩国</td><td>4-0</td><td>友谊赛</td><td>大胜</td><td>攻击力惊人</td></tr><tr><td>03-31</td><td>vs苏格兰</td><td>1-0</td><td>友谊赛</td><td>胜</td><td>稳健发挥</td></tr><tr><td>06-04</td><td>@法国</td><td>2-1</td><td>友谊赛</td><td>胜</td><td>击败豪门</td></tr><tr><td>06-14</td><td>vs厄瓜多尔</td><td>1-0</td><td>世界杯</td><td>胜</td><td>开门红</td></tr><tr><td>06-20</td><td>@德国</td><td>1-2</td><td>世界杯</td><td>负</td><td>虽败犹荣</td></tr></tbody></table>
+<strong>统计</strong>: 4胜1负 | 进9球 | 失4球 | 净胜+5
+
+<strong>状态评价</strong>: 极佳。连胜韩国、法国等强队，仅惜败德国，整体状态火热。
+
+<table class="md-table"><thead><tr><th>指标</th><th>库拉索</th><th>科特迪瓦</th></tr></thead><tbody><tr><td>近5场胜率</td><td>0%</td><td>80%</td></tr><tr><td>场均进球</td><td>1.2</td><td>1.8</td></tr><tr><td>场均失球</td><td>3.4</td><td>0.8</td></tr><tr><td>对阵强队表现</td><td>惨败</td><td>有胜有负</td></tr><tr><td><strong>本维度得分</strong></td><td><strong>15分</strong></td><td><strong>90分</strong></td></tr></tbody></table>
+<hr>
+
+<h3>维度3: 历史交锋 (权重15%)</h3>
+
+<table class="md-table"><thead><tr><th>指标</th><th>数据</th></tr></thead><tbody><tr><td>历史交手次数</td><td><strong>0场</strong></td></tr><tr><td>库拉索胜</td><td>0</td></tr><tr><td>科特迪瓦胜</td><td>0</td></tr><tr><td>平局</td><td>0</td></tr></tbody></table>
+<strong>分析</strong>: 两队此前从未在国际A级赛事中交手。库拉索属CONCACAF，科特迪瓦属CAF，两队仅在世界杯小组赛首次相遇。无历史参考数据，本维度取中立值。
+
+<table class="md-table"><thead><tr><th>指标</th><th>库拉索</th><th>科特迪瓦</th></tr></thead><tbody><tr><td><strong>本维度得分</strong></td><td><strong>50分</strong></td><td><strong>50分</strong></td></tr></tbody></table>
+<hr>
+
+<h3>维度4: 伤停影响 (权重15%)</h3>
+
+<p>#### 库拉索伤停情况</p>
+
+<table class="md-table"><thead><tr><th>状态</th><th>球员</th><th>影响评估</th></tr></thead><tbody><tr><td>未知</td><td>暂无具体伤停报告</td><td>阵容相对完整</td></tr></tbody></table>
+<strong>评估</strong>: 库拉索阵容深度有限，主要依赖Bacuna兄弟等核心球员，但整体伤病情况不明。
+
+<p>#### 科特迪瓦伤停情况</p>
+
+<table class="md-table"><thead><tr><th>状态</th><th>球员</th><th>位置</th><th>影响评估</th></tr></thead><tbody><tr><td>存疑</td><td>Seko Fofana</td><td>中场核心</td><td>肌肉伤病历史，需观察</td></tr><tr><td>存疑</td><td>Jean Michaël Seri</td><td>中场</td><td>ACL伤病恢复中</td></tr><tr><td>可用</td><td>Sébastien Haller</td><td>前锋</td><td>癌症康复，体能需管理</td></tr><tr><td>可用</td><td>Nicolas Pépé</td><td>边锋</td><td>年龄管理，轮换出场</td></tr></tbody></table>
+<strong>评估</strong>: 科特迪瓦有部分球员存在伤病隐忧，但核心框架完整。由于已出线，可能对部分球员进行轮换保护。
+
+<table class="md-table"><thead><tr><th>指标</th><th>库拉索</th><th>科特迪瓦</th></tr></thead><tbody><tr><td>核心球员缺阵</td><td>0人</td><td>0-1人(可能)</td></tr><tr><td>阵容完整度</td><td>中等</td><td>较高</td></tr><tr><td><strong>本维度得分</strong></td><td><strong>65分</strong></td><td><strong>70分</strong></td></tr></tbody></table>
+<hr>
+
+<h3>维度5: 主客场因素 (权重10%)</h3>
+
+<table class="md-table"><thead><tr><th>指标</th><th>评估</th></tr></thead><tbody><tr><td>场地</td><td>中立场 (美国费城)</td></tr><tr><td>"主场"优势</td><td>无 (库拉索为加勒比海岛国)</td></tr><tr><td>"客场"劣势</td><td>轻微 (科特迪瓦远道而来)</td></tr><tr><td>气候适应</td><td>双方均需适应</td></tr><tr><td>观众支持</td><td>无明显倾向</td></tr></tbody></table>
+<strong>分析</strong>: 世界杯为中立场地，无明显主客场优势。科特迪瓦虽为客场，但非洲球队在美国有一定 diaspora 支持。
+
+<table class="md-table"><thead><tr><th>指标</th><th>库拉索</th><th>科特迪瓦</th></tr></thead><tbody><tr><td><strong>本维度得分</strong></td><td><strong>50分</strong></td><td><strong>50分</strong></td></tr></tbody></table>
+<hr>
+
+<h3>维度6: 赔率信号 (权重10%)</h3>
+
+<table class="md-table"><thead><tr><th>指标</th><th>数据</th><th>解读</th></tr></thead><tbody><tr><td>欧赔主胜</td><td>18.00</td><td>极低概率</td></tr><tr><td>欧赔平局</td><td>8.00</td><td>低概率</td></tr><tr><td><strong>欧赔客胜</strong></td><td><strong>1.15</strong></td><td><strong>极高概率</strong></td></tr><tr><td>隐含概率(客胜)</td><td>82.8%</td><td>机构极度看好</td></tr><tr><td>亚盘盘口</td><td>客让2.5球</td><td>实力差距明显</td></tr><tr><td>大小球盘口</td><td>3.5球</td><td>倾向小球</td></tr></tbody></table>
+<strong>赔率信号解读</strong>:
+1. 客胜赔率1.15，隐含概率82.8%，机构极度看好科特迪瓦
+2. 亚盘让2.5球，预期科特迪瓦净胜2-3球
+3. 大小球3.5，预期总进球2-3个
+
+<table class="md-table"><thead><tr><th>指标</th><th>库拉索</th><th>科特迪瓦</th></tr></thead><tbody><tr><td>赔率支持度</td><td>极低</td><td>极高</td></tr><tr><td><strong>本维度得分</strong></td><td><strong>15分</strong></td><td><strong>95分</strong></td></tr></tbody></table>
+<hr>
+
+<h3>维度7: 其他因素 (权重5%)</h3>
+
+<table class="md-table"><thead><tr><th>因素</th><th>分析</th></tr></thead><tbody><tr><td><strong>比赛动机</strong></td><td>库拉索已淘汰，为荣誉而战；科特迪瓦已出线，可能轮换</td></tr><tr><td><strong>赛程密度</strong></td><td>小组赛末轮，体能影响有限</td></tr><tr><td><strong>心理状态</strong></td><td>库拉索压力大(已出局)；科特迪瓦轻松(已出线)</td></tr><tr><td><strong>天气</strong></td><td>费城6月底，预计晴，25-30°C，适宜比赛</td></tr><tr><td><strong>裁判</strong></td><td>待定，无明显倾向</td></tr></tbody></table>
+<strong>分析</strong>: 库拉索已无出线压力，可能放下包袱发挥；科特迪瓦已出线，可能考虑淘汰赛轮换。但整体实力差距过大，动机因素影响有限。
+
+<table class="md-table"><thead><tr><th>指标</th><th>库拉索</th><th>科特迪瓦</th></tr></thead><tbody><tr><td>综合评估</td><td>中等</td><td>中等</td></tr><tr><td><strong>本维度得分</strong></td><td><strong>55分</strong></td><td><strong>55分</strong></td></tr></tbody></table>
+<hr>
+
+<h2>综合评分汇总</h2>
+
+<table class="md-table"><thead><tr><th>维度</th><th>权重</th><th>库拉索</th><th>科特迪瓦</th></tr></thead><tbody><tr><td>1. 球队实力</td><td>25%</td><td>25</td><td>90</td></tr><tr><td>2. 近期状态</td><td>20%</td><td>15</td><td>90</td></tr><tr><td>3. 历史交锋</td><td>15%</td><td>50</td><td>50</td></tr><tr><td>4. 伤停影响</td><td>15%</td><td>65</td><td>70</td></tr><tr><td>5. 主客场</td><td>10%</td><td>50</td><td>50</td></tr><tr><td>6. 赔率信号</td><td>10%</td><td>15</td><td>95</td></tr><tr><td>7. 其他因素</td><td>5%</td><td>55</td><td>55</td></tr><tr><td><strong>加权总分</strong></td><td><strong>100%</strong></td><td><strong>33.5</strong></td><td><strong>75.5</strong></td></tr></tbody></table>
+<h3>信心指数计算</h3>
+
+<pre><code>
+信心指数 = 科特迪瓦得分 / (库拉索得分 + 科特迪瓦得分) × 100%
+         = 75.5 / (33.5 + 75.5) × 100%
+         = 75.5 / 109 × 100%
+         = 69.3%
+</code></pre>
+
+<p>考虑赔率隐含概率加权:</p>
+<pre><code>
+最终信心指数 = (69.3% + 82.8%) / 2 = 76%
+</code></pre>
+
+<hr>
+
+<h2>赛果概率分布</h2>
+
+<table class="md-table"><thead><tr><th>结果</th><th>模型预测</th><th>赔率隐含</th><th>综合概率</th></tr></thead><tbody><tr><td><strong>科特迪瓦胜</strong></td><td>70%</td><td>82.8%</td><td><strong>76%</strong></td></tr><tr><td>平局</td><td>20%</td><td>11.9%</td><td>16%</td></tr><tr><td>库拉索胜</td><td>10%</td><td>5.3%</td><td>8%</td></tr></tbody></table>
+<hr>
+
+<h2>投注建议</h2>
+
+<h3>推荐投注</h3>
+
+<table class="md-table"><thead><tr><th>玩法</th><th>推荐</th><th>赔率</th><th>信心度</th><th>建议注额</th></tr></thead><tbody><tr><td><strong>胜负</strong></td><td>客胜 (科特迪瓦)</td><td>1.15</td><td>强烈推荐</td><td>¥15,000</td></tr><tr><td><strong>让球</strong></td><td>客让2球</td><td>~1.90</td><td>推荐</td><td>¥8,000</td></tr><tr><td><strong>大小球</strong></td><td>小球 3.5</td><td>1.67</td><td>推荐</td><td>¥10,000</td></tr><tr><td><strong>比分</strong></td><td>0-2 / 0-3</td><td>6.5 / 8.0</td><td>谨慎推荐</td><td>¥3,000</td></tr></tbody></table>
+<h3>投注策略</h3>
+
+<p>1. <strong>主投</strong>: 科特迪瓦胜 (赔率1.15，稳健型)</p>
+<p>2. <strong>辅投</strong>: 全场小球3.5 (赔率1.67，博取合理回报)</p>
+<p>3. <strong>娱乐</strong>: 比分0-2或0-3 (小概率高回报)</p>
+
+<h3>风险提示</h3>
+
+<table class="md-table"><thead><tr><th>风险因素</th><th>概率</th><th>影响</th></tr></thead><tbody><tr><td>科特迪瓦大幅轮换</td><td>中等</td><td>可能影响净胜球</td></tr><tr><td>库拉索防守超常发挥</td><td>低</td><td>可能逼平或小负</td></tr><tr><td>红牌/点球等意外</td><td>低</td><td>改变比赛走势</td></tr></tbody></table>
+<hr>
+
+<h2>预测比分</h2>
+
+<table class="md-table"><thead><tr><th>比分</th><th>概率</th><th>说明</th></tr></thead><tbody><tr><td><strong>0-2</strong></td><td>25%</td><td>科特迪瓦控制节奏，小胜</td></tr><tr><td><strong>0-3</strong></td><td>18%</td><td>科特迪瓦下半场发力</td></tr><tr><td><strong>1-2</strong></td><td>12%</td><td>库拉索荣誉进球</td></tr><tr><td><strong>0-1</strong></td><td>15%</td><td>科特迪瓦经济实惠</td></tr><tr><td><strong>1-3</strong></td><td>10%</td><td>对攻战，科特迪瓦胜出</td></tr></tbody></table>
+<h3>最终预测</h3>
+
+<pre><code>
+┌─────────────────────────────────────────────┐
+│                                             │
+│    库拉索    0 - 2    科特迪瓦               │
+│                                             │
+│    进球:              Fofana 45'            │
+│                      Adingra 78'            │
+│                                             │
+└─────────────────────────────────────────────┘
+</code></pre>
+
+<hr>
+
+<h2>比赛展望</h2>
+
+<h3>关键看点</h3>
+1. 科特迪瓦是否会轮换主力备战淘汰赛
+2. 库拉索能否避免再次惨败
+3. 大小球是否开在3.5以下
+
+<h3>比赛走势预测</h3>
+<ul><li><strong>上半场</strong>: 科特迪瓦控球主导，可能1-0领先</li>
+<li><strong>下半场</strong>: 科特迪瓦可能换人调整，再入1球锁定胜局</li>
+<li><strong>全场</strong>: 科特迪瓦2-0获胜，平稳晋级</li>
+</ul>
+<hr>
+
+<h2>关键球员对位</h2>
+
+<table class="md-table"><thead><tr><th>位置</th><th>库拉索</th><th>vs</th><th>科特迪瓦</th></tr></thead><tbody><tr><td>门将</td><td>-</td><td>vs</td><td>Sangaré</td></tr><tr><td>中卫</td><td>Martina</td><td>vs</td><td>Ndicka (Roma)</td></tr><tr><td>中场</td><td>L. Bacuna</td><td>vs</td><td>Fofana (Al-Nassr)</td></tr><tr><td>边锋</td><td>-</td><td>vs</td><td>Adingra (Brighton)</td></tr><tr><td>前锋</td><td>-</td><td>vs</td><td>Haller (Dortmund)</td></tr></tbody></table>
+<hr>
+
+<h2>数据完整度评估</h2>
+
+<pre><code>
+整体数据完整度: 约 80%
+
+<p>核心数据:</p>
+<p>├─ 赔率分析:     ███████████ 95%  (充足)</p>
+<p>├─ 实力对比:     ████████░░░ 80%  (良好)</p>
+<p>├─ 状态分析:     █████████░░ 90%  (充足)</p>
+<p>├─ 伤停信息:     ███░░░░░░░░ 30%  (部分缺失)</p>
+<p>└─ 历史交锋:     █████░░░░░░ 50%  (无交锋记录)</p>
+</code></pre>
+
+<strong>可信度</strong>: 本报告分析可信度约<strong>78%</strong>，主要基于赔率数据和近期战绩。
+
+<hr>
+
+<h2>预测记录</h2>
+
+<table class="md-table"><thead><tr><th>项目</th><th>内容</th></tr></thead><tbody><tr><td>预测ID</td><td>pred_1782368256_1562</td></tr><tr><td>预测结果</td><td>客胜 (科特迪瓦)</td></tr><tr><td>赔率</td><td>1.15</td></tr><tr><td>投注金额</td><td>¥10,000 (标准注)</td></tr><tr><td>信心度</td><td>推荐</td></tr></tbody></table>
+<hr>
+
+<p>*免责声明*</p>
+<p>1. 本分析仅供参考娱乐，不构成任何投注建议</p>
+<p>2. 足球比赛充满不确定性，历史数据不代表未来结果</p>
+<p>3. 请通过中国体育彩票等合法渠道参与竞猜</p>
+<p>4. 请理性投注，量力而行，切勿沉迷</p>
+
+        </div>
+
+        <footer>
+            <p>数据来源：ESPN API (DraftKings赔率) | 生成时间：2026-06-25 16:22</p>
+        </footer>
+    </div>
+</body>
+</html>

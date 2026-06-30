@@ -1,0 +1,180 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>2026世界杯分析报告</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f0f4f8;color:#1e293b;line-height:1.5}
+.container{max-width:1500px;margin:0 auto;padding:14px 18px}
+
+/* ===== 索引页 ===== */
+.header{text-align:center;padding:18px 30px 14px;background:linear-gradient(135deg,#e0f2fe,#bae6fd,#7dd3fc);border-radius:14px;margin-bottom:14px}
+.header h1{font-size:1.5rem;font-weight:700;color:#0c4a6e}
+.header .sub{color:#0369a1;font-size:.8rem}
+.stats{display:flex;justify-content:center;gap:14px;margin-top:12px;flex-wrap:wrap}
+.stat-card{background:white;border-radius:10px;padding:8px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.stat-num{font-size:1.3rem;font-weight:700;color:#0284c7}
+.stat-label{font-size:.7rem;color:#64748b}
+
+.filter-bar{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;align-items:center;background:white;border-radius:12px;padding:10px 16px;box-shadow:0 1px 4px rgba(0,0,0,.03)}
+.filter-bar .lb{font-size:.8rem;color:#64748b;font-weight:600}
+.filter-bar select{padding:7px 12px;border:1px solid #e2e8f0;border-radius:8px;background:#f8fafc;color:#334155;font-size:.82rem;outline:none}
+
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.card{background:white;border-radius:12px;padding:16px 18px;box-shadow:0 1px 6px rgba(0,0,0,.03);border:1px solid #e2e8f0;transition:all .2s;cursor:pointer}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.08);border-color:#3b82f6}
+.card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.group-badge{display:inline-flex;gap:3px;background:linear-gradient(135deg,#3b82f6,#8b5cf6);color:white;padding:3px 10px;border-radius:16px;font-size:.75rem;font-weight:700}
+.match-time{color:#64748b;font-size:.78rem}
+.teams-row{display:flex;align-items:center;justify-content:center;gap:10px;margin:12px 0}
+.team-block{flex:1;text-align:center}
+.team-flag{font-size:1.6rem}
+.team-name{font-weight:700;font-size:.92rem}
+.vs-text{font-size:.9rem;color:#cbd5e1;font-weight:800}
+.odds-bar{display:flex;height:6px;border-radius:3px;overflow:hidden;background:#e2e8f0;margin-top:8px}
+.odds-bar div{height:100%}
+.odds-legend{display:flex;justify-content:space-between;margin-top:5px;font-size:.7rem;color:#64748b}
+.pred-box{background:#f8fafc;border-radius:10px;padding:12px;margin-top:10px}
+.pred-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;font-size:.8rem}
+.pred-label{color:#64748b}
+.pred-val{font-weight:700;color:#1e293b}
+.conf-badge{padding:2px 10px;border-radius:12px;font-size:.74rem;font-weight:600}
+.conf-5{background:#22c55e1a;color:#15803d}
+.conf-4{background:#3b82f61a;color:#1d4ed8}
+.conf-3{background:#f59e0b1a;color:#b45309}
+.detail-link{display:block;text-align:center;margin-top:12px;padding:9px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;color:#2563eb;text-decoration:none;font-weight:600;font-size:.8rem}
+.detail-link:hover{background:#dbeafe}
+.result-badge{font-size:.72rem;padding:2px 8px;border-radius:10px;font-weight:600}
+.result-hit{background:#dcfce7;color:#15803d}
+.result-miss{background:#fef2f2;color:#dc2626}
+.result-pending{background:#f0f9ff;color:#0284c7}
+
+@media(max-width:1200px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){.grid{grid-template-columns:1fr}}
+
+/* ===== 详情页 ===== */
+.d-back{display:inline-flex;align-items:center;gap:4px;color:#3b82f6;text-decoration:none;font-size:.78rem;margin-bottom:8px;font-weight:500}
+.d-back:hover{color:#1d4ed8}
+
+/* Hero区 */
+.d-hero{background:linear-gradient(135deg,#e0f2fe,#bae6fd,#7dd3fc);border-radius:14px;padding:18px 28px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.d-hero-left{flex:1}
+.d-hero-title{font-size:1.5rem;font-weight:800;color:#0c4a6e;margin-bottom:6px}
+.d-hero-meta{display:flex;gap:16px;flex-wrap:wrap;font-size:.78rem;color:#0369a1}
+.d-hero-meta span{background:rgba(255,255,255,.6);padding:3px 10px;border-radius:10px}
+.d-hero-right{text-align:center;background:white;border-radius:12px;padding:14px 22px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.d-hero-score{font-size:2rem;font-weight:800;color:#1e293b}
+.d-hero-pred{font-size:.8rem;color:#64748b;margin-top:4px}
+
+/* 两栏主内容 */
+.d-main{display:flex;gap:12px}
+.d-left{flex:1.2;min-width:0}
+.d-right{flex:1;min-width:0}
+
+/* Section通用 */
+.section{background:white;border-radius:12px;padding:16px 18px;margin-bottom:10px;box-shadow:0 1px 4px rgba(0,0,0,.03)}
+.section h2{font-size:.95rem;color:#1e293b;margin-bottom:12px;padding-bottom:7px;border-bottom:1.5px solid #e2e8f0}
+.section h3{font-size:.85rem;color:#334155;margin-bottom:8px}
+
+/* 赔率Grid */
+.odds-row{display:flex;gap:8px}
+.odds-cell{flex:1;background:#f8fafc;border-radius:8px;padding:10px;text-align:center}
+.odds-cell.best{background:#eff6ff;border:1.5px solid #3b82f6}
+.odds-cell .ol{font-size:.7rem;color:#64748b}
+.odds-cell .ov{font-size:1.1rem;font-weight:800;color:#1e293b}
+.odds-cell .op{font-size:.68rem;color:#3b82f6;margin-top:2px}
+
+/* 7维度 */
+.dim-item{margin-bottom:8px;border-left:3px solid #e2e8f0;padding-left:10px}
+.dim-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:3px}
+.dim-name{font-size:.8rem;font-weight:700;color:#334155}
+.dim-scores{font-size:.75rem;color:#64748b}
+.dim-scores .s-home{color:#f59e0b;font-weight:700}
+.dim-scores .s-away{color:#6366f1;font-weight:700}
+.dim-track{display:flex;height:5px;border-radius:3px;overflow:hidden;background:#f1f5f9;margin:4px 0}
+.dim-track .t-home{background:linear-gradient(90deg,#f59e0b,#fbbf24)}
+.dim-track .t-away{background:linear-gradient(90deg,#6366f1,#8b5cf6)}
+.dim-text{font-size:.73rem;color:#64748b;line-height:1.5;margin-top:3px}
+
+/* 积分榜表格 */
+.standings-table{width:100%;border-collapse:collapse;font-size:.72rem}
+.standings-table th{background:#f1f5f9;padding:5px 6px;text-align:center;font-weight:600;color:#475569}
+.standings-table td{padding:5px 6px;text-align:center;border-bottom:1px solid #f1f5f9;color:#475569}
+.standings-table .team-col{text-align:left}
+.standings-table .hl{background:#eff6ff}
+.standings-table .hl td{color:#1d4ed8;font-weight:600}
+
+/* 近期战绩小表 */
+.form-mini{width:100%;border-collapse:collapse;font-size:.7rem;margin-bottom:8px}
+.form-mini th{background:#f8fafc;padding:3px 6px;text-align:left;font-weight:600;color:#94a3b8}
+.form-mini td{padding:3px 6px;border-bottom:1px solid #f1f5f9;color:#64748b}
+.rw{color:#22c55e;font-weight:700}
+.rd{color:#f59e0b;font-weight:700}
+.rl{color:#ef4444;font-weight:700}
+
+/* 球员对位 */
+.matchup-row{display:flex;align-items:center;gap:8px;padding:6px 10px;border-bottom:1px solid #f1f5f9;font-size:.78rem}
+.matchup-row:last-child{border-bottom:none}
+.mu-home{flex:1;text-align:right;font-weight:600;color:#f59e0b}
+.mu-vs{color:#94a3b8;font-size:.7rem}
+.mu-away{flex:1;text-align:left;font-weight:600;color:#6366f1}
+.mu-pos{font-size:.68rem;color:#94a3b8;min-width:40px;text-align:center}
+
+/* 投注建议 */
+.bet-table{width:100%;border-collapse:collapse;font-size:.76rem}
+.bet-table th{background:#f1f5f9;padding:6px 10px;text-align:left;font-weight:600;color:#475569}
+.bet-table td{padding:6px 10px;border-bottom:1px solid #f1f5f9;color:#475569}
+
+/* 备注 */
+.note-box{font-size:.75rem;color:#92400e;line-height:1.6;background:#fffbeb;border:1px solid #fcd34d;border-radius:8px;padding:10px 14px}
+
+/* 小免责 */
+.mini-disclaimer{font-size:.65rem;color:#94a3b8;text-align:center;padding:6px;background:white;border-radius:6px;margin-top:10px}
+
+@media(max-width:1000px){.d-main{flex-direction:column}}
+
+.rw{color:#22c55e;font-weight:700}
+.rd{color:#f59e0b;font-weight:700}
+.rl{color:#ef4444;font-weight:700}
+</style></head><body><div class="container">
+<div class="header"><h1>2026世界杯分析报告</h1><div class="sub">专业数据分析 · 7维度评分模型</div><div class="stats" id="stats"></div></div>
+<div class="filter-bar"><span class="lb">日期:</span><select id="ds" onchange="f()"><option value="all">全部</option></select><span class="lb" style="margin-left:12px">分组:</span><select id="gs" onchange="f()"><option value="all">全部</option></select><span class="lb" style="margin-left:12px">信心:</span><select id="cs" onchange="f()"><option value="all">全部</option><option value="5">强烈推荐</option><option value="4">推荐</option><option value="3">谨慎推荐</option></select></div>
+<div class="grid" id="grid"></div>
+<div style="text-align:center;color:#94a3b8;font-size:.7rem;padding:10px">免责：本分析仅供参考娱乐，不构成投注建议</div>
+</div>
+<script>
+var ALL=[];ALL=[{"d": "2026-06-26", "t": "04:00", "g": "E", "h": "库拉索", "a": "科特迪瓦", "hf": "🇨🇼", "af": "🇨🇮", "oh": "18.0", "od": "8.0", "oa": "1.15", "hp": 5.3, "dp": 11.9, "ap": 82.8, "pl": "客胜 (科特迪瓦)", "ps": "0-2", "cs": "⭐⭐⭐⭐", "cl": "推荐", "cls": "5", "l": 5, "p": true, "fid": "match_760473", "r": null}, {"d": "2026-06-26", "t": "04:00", "g": "E", "h": "厄瓜多尔", "a": "德国", "hf": "🇪🇨", "af": "🇩🇪", "oh": "5.5", "od": "4.9", "oa": "1.53", "hp": 17.5, "dp": 19.6, "ap": 62.9, "pl": "客胜 (德国)", "ps": "1-2", "cs": "⭐⭐⭐⭐", "cl": "推荐", "cls": "5", "l": 5, "p": true, "fid": "match_760468", "r": null}, {"d": "2026-06-26", "t": "07:00", "g": "F", "h": "日本", "a": "瑞典", "hf": "🇯🇵", "af": "🇸🇪", "oh": "1.91", "od": "3.5", "oa": "4.4", "hp": 50.5, "dp": 27.6, "ap": 21.9, "pl": "主胜 (日本)", "ps": "2-1", "cs": "⭐⭐⭐", "cl": "谨慎推荐", "cls": "4", "l": 4, "p": true, "fid": "match_760471", "r": null}, {"d": "2026-06-26", "t": "07:00", "g": "F", "h": "突尼斯", "a": "荷兰", "hf": "🇹🇳", "af": "🇳🇱", "oh": "26.0", "od": "11.0", "oa": "1.1", "hp": 3.7, "dp": 8.8, "ap": 87.5, "pl": "客胜 (荷兰)", "ps": "0-3", "cs": "⭐⭐⭐⭐⭐", "cl": "强烈推荐", "cls": "5", "l": 5, "p": true, "fid": "match_760472", "r": null}, {"d": "2026-06-26", "t": "10:00", "g": "D", "h": "土耳其", "a": "美国", "hf": "🇹🇷", "af": "🇺🇸", "oh": "3.9", "od": "4.1", "oa": "1.87", "hp": 24.8, "dp": 23.6, "ap": 51.7, "pl": "客胜 (美国)", "ps": "0-2", "cs": "⭐⭐⭐⭐", "cl": "推荐", "cls": "4", "l": 4, "p": true, "fid": "match_760470", "r": null}, {"d": "2026-06-26", "t": "10:00", "g": "D", "h": "巴拉圭", "a": "澳大利亚", "hf": "🇵🇾", "af": "🇦🇺", "oh": "2.8", "od": "2.25", "oa": "4.1", "hp": 34.2, "dp": 42.5, "ap": 23.3, "pl": "平局", "ps": "1-1", "cs": "⭐⭐⭐⭐⭐", "cl": "强烈推荐", "cls": "4", "l": 4, "p": true, "fid": "match_760469", "r": null}, {"d": "2026-06-27", "t": "03:00", "g": "I", "h": "挪威", "a": "法国", "hf": "🇳🇴", "af": "🇫🇷", "oh": "5.0", "od": "4.6", "oa": "1.61", "hp": 19.3, "dp": 20.9, "ap": 59.8, "pl": "客胜 (法国)", "ps": "1-2", "cs": "***", "cl": "谨慎推荐", "cls": "5", "l": 5, "p": true, "fid": "match_760476", "r": null}, {"d": "2026-06-27", "t": "03:00", "g": "I", "h": "塞内加尔", "a": "伊拉克", "hf": "🇸🇳", "af": "🇮🇶", "oh": "1.24", "od": "6.5", "oa": "12.0", "hp": 77.3, "dp": 14.7, "ap": 8.0, "pl": "主胜 (塞内加尔)", "ps": "3-0", "cs": "****", "cl": "推荐", "cls": "5", "l": 5, "p": true, "fid": "match_760477", "r": null}, {"d": "2026-06-27", "t": "08:00", "g": "H", "h": "佛得角", "a": "沙特阿拉伯", "hf": "🇨🇻", "af": "🇸🇦", "oh": "2.65", "od": "3.3", "oa": "2.75", "hp": 36.1, "dp": 29.0, "ap": 34.8, "pl": "主胜 (佛得角)", "ps": "1-0", "cs": "**", "cl": "不建议", "cls": "3", "l": 3, "p": true, "fid": "match_760474", "r": null}, {"d": "2026-06-27", "t": "08:00", "g": "H", "h": "乌拉圭", "a": "西班牙", "hf": "🇺🇾", "af": "🇪🇸", "oh": "7.0", "od": "4.1", "oa": "1.53", "hp": 13.7, "dp": 23.4, "ap": 62.8, "pl": "客胜 (西班牙)", "ps": "0-2", "cs": "***", "cl": "谨慎推荐", "cls": "5", "l": 5, "p": true, "fid": "match_760475", "r": null}, {"d": "2026-06-27", "t": "11:00", "g": "G", "h": "埃及", "a": "伊朗", "hf": "🇪🇬", "af": "🇮🇷", "oh": "2.5", "od": "2.6", "oa": "3.8", "hp": 38.2, "dp": 36.7, "ap": 25.1, "pl": "平局", "ps": "1-1", "cs": "**", "cl": "不建议", "cls": "3", "l": 3, "p": true, "fid": "match_760478", "r": null}, {"d": "2026-06-27", "t": "11:00", "g": "G", "h": "新西兰", "a": "比利时", "hf": "🇳🇿", "af": "🇧🇪", "oh": "16.0", "od": "8.5", "oa": "1.17", "hp": 6.0, "dp": 11.4, "ap": 82.6, "pl": "客胜 (比利时)", "ps": "0-4", "cs": "****", "cl": "推荐", "cls": "5", "l": 5, "p": true, "fid": "match_760479", "r": null}, {"d": "2026-06-30", "t": "01:00", "g": "R32", "h": "巴西", "a": "日本", "hf": "🇧🇷", "af": "🇯🇵", "oh": "1.71", "od": "3.75", "oa": "5.25", "hp": 56.1, "dp": 25.6, "ap": 18.3, "pl": "主胜 (巴西)", "ps": "2-1", "cs": "⭐⭐⭐", "cl": "谨慎推荐", "cls": "5", "l": 5, "p": true, "fid": "match_760487", "r": null}, {"d": "2026-06-30", "t": "04:30", "g": "R32", "h": "德国", "a": "巴拉圭", "hf": "🇩🇪", "af": "🇵🇾", "oh": "1.36", "od": "5.0", "oa": "9.0", "hp": 70.3, "dp": 19.1, "ap": 10.6, "pl": "主胜 (德国)", "ps": "3-0", "cs": "⭐⭐⭐⭐⭐", "cl": "强烈推荐", "cls": "5", "l": 5, "p": true, "fid": "match_760489", "r": null}, {"d": "2026-06-30", "t": "09:00", "g": "R32", "h": "荷兰", "a": "摩洛哥", "hf": "🇳🇱", "af": "🇲🇦", "oh": "2.3", "od": "3.1", "oa": "3.5", "hp": 41.7, "dp": 30.9, "ap": 27.4, "pl": "主胜 (荷兰)", "ps": "2-1", "cs": "⭐⭐⭐", "cl": "谨慎推荐", "cls": "4", "l": 4, "p": true, "fid": "match_760488", "r": null}];
+function init(){
+ var t=ALL.length,a=ALL.filter(function(m){return m.p}).length,h=ALL.filter(function(m){return m.l>=4}).length;
+ document.getElementById('stats').innerHTML='<div class="stat-card"><div class="stat-num">'+t+'</div><div class="stat-label">比赛场次</div></div><div class="stat-card"><div class="stat-num">'+a+'</div><div class="stat-label">已分析</div></div><div class="stat-card"><div class="stat-num">'+h+'</div><div class="stat-label">高信心推荐</div></div>';
+ var ds=document.getElementById('ds'),gs=document.getElementById('gs'),dates=[],groups=[];
+ ALL.forEach(function(m){if(dates.indexOf(m.d)===-1)dates.push(m.d);if(groups.indexOf(m.g)===-1&&m.g)groups.push(m.g)});
+ dates.sort().reverse();groups.sort();
+ dates.forEach(function(d){ds.innerHTML+='<option value="'+d+'">'+d+' ('+ALL.filter(function(m){return m.d===d}).length+'场)</option>'});
+ groups.forEach(function(g){gs.innerHTML+='<option value="'+g+'">'+g+'组</option>'});
+ f();
+}
+function f(){
+ var dd=document.getElementById('ds').value,gg=document.getElementById('gs').value,cc=document.getElementById('cs').value;
+ var fl=ALL;
+ if(dd!=='all')fl=fl.filter(function(m){return m.d===dd});
+ if(gg!=='all')fl=fl.filter(function(m){return m.g===gg});
+ if(cc!=='all')fl=fl.filter(function(m){return m.l>=parseInt(cc)});
+ r(fl);
+}
+function r(matches){
+ var h='';
+ matches.forEach(function(m){
+  var rb='';
+  if(m.r&&typeof m.r==='object')rb='<span class="result-badge '+(m.r.h?'result-hit':'result-miss')+'">'+(m.r.h?'命中':'未中')+' '+m.r.s+'</span>';
+  else if(m.p)rb='<span class="result-badge result-pending">待赛</span>';
+  h+='<div class="card"><div class="card-top"><span class="group-badge">'+(m.g||'?')+'组</span><span class="match-time">'+m.d+' '+m.t+'</span>'+rb+'</div>'
+  +'<div class="teams-row"><div class="team-block"><div class="team-flag">'+m.hf+'</div><div class="team-name">'+m.h+'</div></div>'
+  +'<div class="vs-text">VS</div><div class="team-block"><div class="team-flag">'+m.af+'</div><div class="team-name">'+m.a+'</div></div></div>'
+  +'<div><div class="odds-bar"><div style="width:'+m.hp+'%;background:#22c55e"></div><div style="width:'+m.dp+'%;background:#94a3b8"></div><div style="width:'+m.ap+'%;background:#ef4444"></div></div>'
+  +'<div class="odds-legend"><span>主 '+m.oh+'</span><span>平 '+m.od+'</span><span>客 '+m.oa+'</span></div></div>'
+  +'<div class="pred-box"><div class="pred-row"><span class="pred-label">推荐</span><span class="pred-val">'+m.pl+'</span></div>'
+  +'<div class="pred-row"><span class="pred-label">预测比分</span><span class="pred-val">'+m.ps+'</span></div>'
+  +'<div class="pred-row"><span class="pred-label">信心</span><span class="conf-badge conf-'+m.cls+'">'+m.cs+' '+m.cl+'</span></div></div>'
+  +'<a href="details/'+m.fid+'.html" class="detail-link">查看详细分析</a></div>';
+ });
+ document.getElementById('grid').innerHTML=h||'<p style="text-align:center;color:#64748b;padding:50px;background:white;border-radius:16px">暂无比赛</p>';
+}
+init();
+</script></body></html>

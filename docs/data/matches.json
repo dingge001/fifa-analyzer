@@ -1,0 +1,1965 @@
+{
+  "version": "2.0",
+  "last_update": "2026-06-29T18:06:59.977283",
+  "dates": {
+    "2026-06-26": [
+      {
+        "id": "760473",
+        "date": "2026-06-26",
+        "time": "04:00",
+        "group": "E",
+        "venue": "Lincoln Financial Field, Philadelphia",
+        "home": "库拉索",
+        "away": "科特迪瓦",
+        "home_flag": "🇨🇼",
+        "away_flag": "🇨🇮",
+        "odds": {
+          "home": 18.0,
+          "draw": 8.0,
+          "away": 1.15,
+          "spread": 2.5,
+          "over_under": 3.5,
+          "over_odds": 2.2,
+          "under_odds": 1.67
+        },
+        "analysis": {
+          "scores": {
+            "home": 33.5,
+            "away": 75.5
+          },
+          "dimensions": [
+            {
+              "name": "球队实力",
+              "weight": 25,
+              "home": 25,
+              "away": 90
+            },
+            {
+              "name": "近期状态",
+              "weight": 20,
+              "home": 15,
+              "away": 90
+            },
+            {
+              "name": "历史交锋",
+              "weight": 15,
+              "home": 50,
+              "away": 50
+            },
+            {
+              "name": "伤停影响",
+              "weight": 15,
+              "home": 65,
+              "away": 70
+            },
+            {
+              "name": "主客场",
+              "weight": 10,
+              "home": 50,
+              "away": 50
+            },
+            {
+              "name": "赔率信号",
+              "weight": 10,
+              "home": 15,
+              "away": 95
+            },
+            {
+              "name": "其他因素",
+              "weight": 5,
+              "home": 55,
+              "away": 55
+            }
+          ],
+          "confidence": 69.3,
+          "confidence_stars": "⭐⭐⭐⭐",
+          "confidence_label": "推荐",
+          "probabilities": {
+            "home": 8,
+            "draw": 16,
+            "away": 76
+          }
+        },
+        "prediction": {
+          "result": "away_win",
+          "label": "客胜 (科特迪瓦)",
+          "score": "0-2",
+          "bet_amount": 1666.67,
+          "best_odds": 1.15
+        },
+        "result": null,
+        "recent_form": {
+          "home": [
+            {
+              "date": "03-31",
+              "opponent": "澳大利亚",
+              "score": "1-5",
+              "result": "L"
+            },
+            {
+              "date": "05-30",
+              "opponent": "苏格兰",
+              "score": "1-4",
+              "result": "L"
+            },
+            {
+              "date": "06-07",
+              "opponent": "阿鲁巴",
+              "score": "4-0",
+              "result": "W"
+            },
+            {
+              "date": "06-14",
+              "opponent": "德国",
+              "score": "1-7",
+              "result": "L"
+            },
+            {
+              "date": "06-21",
+              "opponent": "厄瓜多尔",
+              "score": "0-0",
+              "result": "D"
+            }
+          ],
+          "away": [
+            {
+              "date": "03-28",
+              "opponent": "韩国",
+              "score": "4-0",
+              "result": "W"
+            },
+            {
+              "date": "03-31",
+              "opponent": "苏格兰",
+              "score": "1-0",
+              "result": "W"
+            },
+            {
+              "date": "06-04",
+              "opponent": "法国",
+              "score": "2-1",
+              "result": "W"
+            },
+            {
+              "date": "06-14",
+              "opponent": "厄瓜多尔",
+              "score": "1-0",
+              "result": "W"
+            },
+            {
+              "date": "06-20",
+              "opponent": "德国",
+              "score": "1-2",
+              "result": "L"
+            }
+          ]
+        },
+        "team_info": {
+          "home": {
+            "fifa_rank": "82-84",
+            "value": "€15-18M",
+            "key_players": [
+              "Leandro Bacuna",
+              "Juninho Bacuna"
+            ]
+          },
+          "away": {
+            "fifa_rank": "38",
+            "value": "€235-245M",
+            "key_players": [
+              "Seko Fofana",
+              "Simon Adingra",
+              "Evan Ndicka",
+              "Franck Kessie"
+            ]
+          }
+        },
+        "notes": "库拉索已淘汰，科特迪瓦已出线可能轮换",
+        "created_at": "2026-06-25T15:30:00Z"
+      },
+      {
+        "id": "760468",
+        "date": "2026-06-26",
+        "time": "04:00",
+        "group": "E",
+        "venue": "待确认",
+        "home": "厄瓜多尔",
+        "away": "德国",
+        "home_flag": "🇪🇨",
+        "away_flag": "🇩🇪",
+        "odds": {
+          "home": 5.5,
+          "draw": 4.9,
+          "away": 1.53,
+          "spread": 1.5,
+          "over_under": 2.5,
+          "over_odds": 1.63,
+          "under_odds": 2.3
+        },
+        "analysis": {
+          "scores": {
+            "home": 47.0,
+            "away": 76.5
+          },
+          "dimensions": [
+            {
+              "name": "球队实力",
+              "weight": 25,
+              "home": 55,
+              "away": 92
+            },
+            {
+              "name": "近期状态",
+              "weight": 20,
+              "home": 35,
+              "away": 95
+            },
+            {
+              "name": "历史交锋",
+              "weight": 15,
+              "home": 35,
+              "away": 65
+            },
+            {
+              "name": "伤停影响",
+              "weight": 15,
+              "home": 70,
+              "away": 70
+            },
+            {
+              "name": "主客场",
+              "weight": 10,
+              "home": 50,
+              "away": 50
+            },
+            {
+              "name": "赔率信号",
+              "weight": 10,
+              "home": 30,
+              "away": 80
+            },
+            {
+              "name": "其他因素",
+              "weight": 5,
+              "home": 65,
+              "away": 45
+            }
+          ],
+          "confidence": 62.4,
+          "confidence_stars": "⭐⭐⭐⭐",
+          "confidence_label": "推荐",
+          "probabilities": {
+            "home": 16.2,
+            "draw": 22.4,
+            "away": 61.4
+          }
+        },
+        "prediction": {
+          "result": "away_win",
+          "label": "客胜 (德国)",
+          "score": "1-2",
+          "bet_amount": 1666.67,
+          "best_odds": 1.53
+        },
+        "result": null,
+        "recent_form": {
+          "home": [
+            {
+              "date": "06-14",
+              "opponent": "科特迪瓦",
+              "score": "0-1",
+              "result": "L"
+            },
+            {
+              "date": "06-21",
+              "opponent": "库拉索",
+              "score": "0-0",
+              "result": "D"
+            }
+          ],
+          "away": [
+            {
+              "date": "06-14",
+              "opponent": "库拉索",
+              "score": "7-1",
+              "result": "W"
+            },
+            {
+              "date": "06-20",
+              "opponent": "科特迪瓦",
+              "score": "2-1",
+              "result": "W"
+            }
+          ]
+        },
+        "team_info": {
+          "home": {
+            "fifa_rank": "26-28",
+            "value": "€300-400M",
+            "key_players": [
+              "Caicedo (Chelsea)",
+              "Páez",
+              "Hincapié"
+            ]
+          },
+          "away": {
+            "fifa_rank": "14",
+            "value": "€900M-1B",
+            "key_players": [
+              "Musiala",
+              "Wirtz",
+              "Havertz",
+              "Rüdiger"
+            ]
+          }
+        },
+        "notes": "德国已出线可能轮换，厄瓜多尔背水一战",
+        "created_at": "2026-06-25T15:40:00Z"
+      },
+      {
+        "id": "760471",
+        "date": "2026-06-26",
+        "time": "07:00",
+        "group": "F",
+        "venue": "待确认",
+        "home": "日本",
+        "away": "瑞典",
+        "home_flag": "🇯🇵",
+        "away_flag": "🇸🇪",
+        "odds": {
+          "home": 1.91,
+          "draw": 3.5,
+          "away": 4.4,
+          "spread": 0.5,
+          "over_under": 2.5,
+          "over_odds": 1.87,
+          "under_odds": 1.91
+        },
+        "analysis": {
+          "scores": {
+            "home": 69.5,
+            "away": 57.5
+          },
+          "dimensions": [
+            {
+              "name": "球队实力",
+              "weight": 25,
+              "home": 82,
+              "away": 72
+            },
+            {
+              "name": "近期状态",
+              "weight": 20,
+              "home": 80,
+              "away": 60
+            },
+            {
+              "name": "历史交锋",
+              "weight": 15,
+              "home": 55,
+              "away": 45
+            },
+            {
+              "name": "伤停影响",
+              "weight": 15,
+              "home": 75,
+              "away": 70
+            },
+            {
+              "name": "主客场",
+              "weight": 10,
+              "home": 50,
+              "away": 50
+            },
+            {
+              "name": "赔率信号",
+              "weight": 10,
+              "home": 70,
+              "away": 40
+            },
+            {
+              "name": "其他因素",
+              "weight": 5,
+              "home": 50,
+              "away": 60
+            }
+          ],
+          "confidence": 53.0,
+          "confidence_stars": "⭐⭐⭐",
+          "confidence_label": "谨慎推荐",
+          "probabilities": {
+            "home": 51.6,
+            "draw": 27.9,
+            "away": 20.5
+          }
+        },
+        "prediction": {
+          "result": "home_win",
+          "label": "主胜 (日本)",
+          "score": "2-1",
+          "bet_amount": 1666.67,
+          "best_odds": 1.91
+        },
+        "result": null,
+        "recent_form": {
+          "home": [
+            {
+              "date": "01-24",
+              "opponent": "伊朗",
+              "score": "1-2",
+              "result": "L"
+            },
+            {
+              "date": "03-24",
+              "opponent": "乌拉圭",
+              "score": "1-0",
+              "result": "W"
+            },
+            {
+              "date": "09-24",
+              "opponent": "中国",
+              "score": "7-0",
+              "result": "W"
+            }
+          ],
+          "away": []
+        },
+        "team_info": {
+          "home": {
+            "fifa_rank": "16",
+            "value": "€300-400M",
+            "key_players": [
+              "三笘薰 (Brighton)",
+              "久保建英 (皇家社会)",
+              "远藤航 (利物浦)"
+            ]
+          },
+          "away": {
+            "fifa_rank": "24-28",
+            "value": "€250-350M",
+            "key_players": [
+              "Isak (纽卡)",
+              "Kulusevski (热刺)"
+            ]
+          }
+        },
+        "notes": "日本已出线可能轮换，瑞典需争取",
+        "created_at": "2026-06-25T16:00:00Z"
+      },
+      {
+        "id": "760472",
+        "date": "2026-06-26",
+        "time": "07:00",
+        "group": "F",
+        "venue": "待确认",
+        "home": "突尼斯",
+        "away": "荷兰",
+        "home_flag": "🇹🇳",
+        "away_flag": "🇳🇱",
+        "odds": {
+          "home": 26.0,
+          "draw": 11.0,
+          "away": 1.1,
+          "spread": 2.5,
+          "over_under": 3.5,
+          "over_odds": 2.0,
+          "under_odds": 1.8
+        },
+        "analysis": {
+          "scores": {
+            "home": 28.5,
+            "away": 80.5
+          },
+          "dimensions": [
+            {
+              "name": "球队实力",
+              "weight": 25,
+              "home": 30,
+              "away": 95
+            },
+            {
+              "name": "近期状态",
+              "weight": 20,
+              "home": 10,
+              "away": 90
+            },
+            {
+              "name": "历史交锋",
+              "weight": 15,
+              "home": 20,
+              "away": 80
+            },
+            {
+              "name": "伤停影响",
+              "weight": 15,
+              "home": 65,
+              "away": 75
+            },
+            {
+              "name": "主客场",
+              "weight": 10,
+              "home": 50,
+              "away": 50
+            },
+            {
+              "name": "赔率信号",
+              "weight": 10,
+              "home": 5,
+              "away": 95
+            },
+            {
+              "name": "其他因素",
+              "weight": 5,
+              "home": 50,
+              "away": 50
+            }
+          ],
+          "confidence": 80.7,
+          "confidence_stars": "⭐⭐⭐⭐⭐",
+          "confidence_label": "强烈推荐",
+          "probabilities": {
+            "home": 6.8,
+            "draw": 11.9,
+            "away": 81.3
+          }
+        },
+        "prediction": {
+          "result": "away_win",
+          "label": "客胜 (荷兰)",
+          "score": "0-3",
+          "bet_amount": 1666.67,
+          "best_odds": 1.1
+        },
+        "result": null,
+        "recent_form": {
+          "home": [
+            {
+              "date": "06-14",
+              "opponent": "瑞典",
+              "score": "1-?",
+              "result": "L"
+            },
+            {
+              "date": "06-20",
+              "opponent": "日本",
+              "score": "0-?",
+              "result": "L"
+            }
+          ],
+          "away": [
+            {
+              "date": "06-14",
+              "opponent": "突尼斯",
+              "score": "7-1",
+              "result": "W"
+            }
+          ]
+        },
+        "team_info": {
+          "home": {
+            "fifa_rank": "30-40",
+            "value": "€50-80M",
+            "key_players": [
+              "无顶级球星"
+            ]
+          },
+          "away": {
+            "fifa_rank": "8-10",
+            "value": "€800M-1B",
+            "key_players": [
+              "Memphis Depay",
+              "Van Dijk",
+              "De Jong",
+              "Gakpo"
+            ]
+          }
+        },
+        "notes": "突尼斯已淘汰，荷兰已出线可能轮换",
+        "created_at": "2026-06-25T16:10:00Z"
+      },
+      {
+        "id": "760470",
+        "date": "2026-06-26",
+        "time": "10:00",
+        "group": "D",
+        "venue": "待确认 (美国主场)",
+        "home": "土耳其",
+        "away": "美国",
+        "home_flag": "🇹🇷",
+        "away_flag": "🇺🇸",
+        "odds": {
+          "home": 3.9,
+          "draw": 4.1,
+          "away": 1.87,
+          "spread": 0.5,
+          "over_under": 2.5,
+          "over_odds": 1.67,
+          "under_odds": 2.2
+        },
+        "analysis": {
+          "scores": {
+            "home": 46.5,
+            "away": 76.5
+          },
+          "dimensions": [
+            {
+              "name": "球队实力",
+              "weight": 25,
+              "home": 68,
+              "away": 82
+            },
+            {
+              "name": "近期状态",
+              "weight": 20,
+              "home": 15,
+              "away": 95
+            },
+            {
+              "name": "历史交锋",
+              "weight": 15,
+              "home": 50,
+              "away": 50
+            },
+            {
+              "name": "伤停影响",
+              "weight": 15,
+              "home": 70,
+              "away": 75
+            },
+            {
+              "name": "主客场",
+              "weight": 10,
+              "home": 35,
+              "away": 80
+            },
+            {
+              "name": "赔率信号",
+              "weight": 10,
+              "home": 35,
+              "away": 75
+            },
+            {
+              "name": "其他因素",
+              "weight": 5,
+              "home": 45,
+              "away": 60
+            }
+          ],
+          "confidence": 57.0,
+          "confidence_stars": "⭐⭐⭐⭐",
+          "confidence_label": "推荐",
+          "probabilities": {
+            "home": 20.8,
+            "draw": 24.3,
+            "away": 54.9
+          }
+        },
+        "prediction": {
+          "result": "away_win",
+          "label": "客胜 (美国)",
+          "score": "0-2",
+          "bet_amount": 1666.67,
+          "best_odds": 1.87
+        },
+        "result": null,
+        "recent_form": {
+          "home": [
+            {
+              "date": "06-14",
+              "opponent": "澳大利亚",
+              "score": "0-?",
+              "result": "L"
+            },
+            {
+              "date": "06-20",
+              "opponent": "巴拉圭",
+              "score": "0-?",
+              "result": "L"
+            }
+          ],
+          "away": [
+            {
+              "date": "06-14",
+              "opponent": "巴拉圭",
+              "score": "2-1",
+              "result": "W"
+            },
+            {
+              "date": "06-20",
+              "opponent": "澳大利亚",
+              "score": "4-0",
+              "result": "W"
+            }
+          ]
+        },
+        "team_info": {
+          "home": {
+            "fifa_rank": "26-30",
+            "value": "€350-450M",
+            "key_players": [
+              "Calhanoglu (国米)",
+              "Guler (皇马)",
+              "Yildiz (尤文)"
+            ]
+          },
+          "away": {
+            "fifa_rank": "20-25",
+            "value": "€500-600M",
+            "key_players": [
+              "Pulisic (AC米兰)",
+              "McKennie (尤文)",
+              "Reyna (多特)"
+            ]
+          }
+        },
+        "notes": "土耳其已淘汰，美国东道主气势如虹",
+        "created_at": "2026-06-25T16:20:00Z"
+      },
+      {
+        "id": "760469",
+        "date": "2026-06-26",
+        "time": "10:00",
+        "group": "D",
+        "venue": "待确认",
+        "home": "巴拉圭",
+        "away": "澳大利亚",
+        "home_flag": "🇵🇾",
+        "away_flag": "🇦🇺",
+        "odds": {
+          "home": 2.8,
+          "draw": 2.25,
+          "away": 4.1,
+          "spread": 0.5,
+          "over_under": 1.5,
+          "over_odds": 1.65,
+          "under_odds": 2.25
+        },
+        "analysis": {
+          "scores": {
+            "home": 53.5,
+            "away": 58.5
+          },
+          "dimensions": [
+            {
+              "name": "球队实力",
+              "weight": 25,
+              "home": 45,
+              "away": 72
+            },
+            {
+              "name": "近期状态",
+              "weight": 20,
+              "home": 50,
+              "away": 65
+            },
+            {
+              "name": "历史交锋",
+              "weight": 15,
+              "home": 55,
+              "away": 45
+            },
+            {
+              "name": "伤停影响",
+              "weight": 15,
+              "home": 70,
+              "away": 70
+            },
+            {
+              "name": "主客场",
+              "weight": 10,
+              "home": 50,
+              "away": 50
+            },
+            {
+              "name": "赔率信号",
+              "weight": 10,
+              "home": 60,
+              "away": 40
+            },
+            {
+              "name": "其他因素",
+              "weight": 5,
+              "home": 55,
+              "away": 55
+            }
+          ],
+          "confidence": 52.2,
+          "confidence_stars": "⭐⭐⭐⭐⭐",
+          "confidence_label": "强烈推荐",
+          "probabilities": {
+            "home": 33.3,
+            "draw": 40.5,
+            "away": 26.3
+          }
+        },
+        "prediction": {
+          "result": "draw",
+          "label": "平局",
+          "score": "1-1",
+          "bet_amount": 1666.67,
+          "best_odds": 2.25
+        },
+        "result": null,
+        "recent_form": {
+          "home": [
+            {
+              "date": "06-14",
+              "opponent": "美国",
+              "score": "1-2",
+              "result": "L"
+            },
+            {
+              "date": "06-20",
+              "opponent": "土耳其",
+              "score": "2-0",
+              "result": "W"
+            }
+          ],
+          "away": [
+            {
+              "date": "06-14",
+              "opponent": "土耳其",
+              "score": "2-0",
+              "result": "W"
+            },
+            {
+              "date": "06-20",
+              "opponent": "美国",
+              "score": "0-4",
+              "result": "L"
+            }
+          ]
+        },
+        "team_info": {
+          "home": {
+            "fifa_rank": "50-60",
+            "value": "€80-120M",
+            "key_players": [
+              "无顶级球星"
+            ]
+          },
+          "away": {
+            "fifa_rank": "25-30",
+            "value": "€200-300M",
+            "key_players": [
+              "Boozaaroumis",
+              "Irvine",
+              "Mooy"
+            ]
+          }
+        },
+        "notes": "双方都积3分，生死战！机构最看好平局",
+        "created_at": "2026-06-25T16:30:00Z"
+      }
+    ],
+    "2026-06-27": [
+      {
+        "id": "760476",
+        "date": "2026-06-27",
+        "time": "03:00",
+        "group": "I",
+        "venue": "Gillette Stadium, Foxborough",
+        "home": "挪威",
+        "away": "法国",
+        "home_flag": "🇳🇴",
+        "away_flag": "🇫🇷",
+        "odds": {
+          "home": 5.0,
+          "draw": 4.6,
+          "away": 1.61,
+          "spread": 0.75,
+          "over_under": 3.5,
+          "over_odds": 2.25,
+          "under_odds": 1.62
+        },
+        "analysis": {
+          "scores": {
+            "home": 57.3,
+            "away": 66.3
+          },
+          "dimensions": [
+            {
+              "name": "球队实力",
+              "weight": 25,
+              "home": 65,
+              "away": 92
+            },
+            {
+              "name": "近期状态",
+              "weight": 20,
+              "home": 90,
+              "away": 90
+            },
+            {
+              "name": "历史交锋",
+              "weight": 15,
+              "home": 45,
+              "away": 55
+            },
+            {
+              "name": "伤停影响",
+              "weight": 15,
+              "home": 65,
+              "away": 70
+            },
+            {
+              "name": "主客场",
+              "weight": 10,
+              "home": 50,
+              "away": 50
+            },
+            {
+              "name": "赔率信号",
+              "weight": 10,
+              "home": 40,
+              "away": 60
+            },
+            {
+              "name": "其他因素",
+              "weight": 5,
+              "home": 50,
+              "away": 50
+            }
+          ],
+          "confidence": 60.0,
+          "confidence_stars": "***",
+          "confidence_label": "谨慎推荐",
+          "probabilities": {
+            "home": 19,
+            "draw": 21,
+            "away": 60
+          }
+        },
+        "prediction": {
+          "result": "away_win",
+          "label": "客胜 (法国)",
+          "score": "1-2",
+          "bet_amount": 1666.67,
+          "best_odds": 1.61
+        },
+        "result": null,
+        "team_info": {
+          "home": {
+            "fifa_rank": "40",
+            "value": "€350M",
+            "key_players": [
+              "Haaland",
+              "Odegaard",
+              "Berge"
+            ]
+          },
+          "away": {
+            "fifa_rank": "2",
+            "value": "€1.2B",
+            "key_players": [
+              "Mbappe",
+              "Griezmann",
+              "Saliba"
+            ]
+          }
+        },
+        "notes": "I组头名之争! 两队均已出线(各6分),法国赢球锁定第一",
+        "created_at": "2026-06-26T06:34:14.636713Z"
+      },
+      {
+        "id": "760477",
+        "date": "2026-06-27",
+        "time": "03:00",
+        "group": "I",
+        "venue": "BMO Field, Toronto",
+        "home": "塞内加尔",
+        "away": "伊拉克",
+        "home_flag": "🇸🇳",
+        "away_flag": "🇮🇶",
+        "odds": {
+          "home": 1.24,
+          "draw": 6.5,
+          "away": 12.0,
+          "spread": -1.5,
+          "over_under": 3.5,
+          "over_odds": 2.3,
+          "under_odds": 1.62
+        },
+        "analysis": {
+          "scores": {
+            "home": 74.5,
+            "away": 27.5
+          },
+          "dimensions": [
+            {
+              "name": "球队实力",
+              "weight": 25,
+              "home": 78,
+              "away": 30
+            },
+            {
+              "name": "近期状态",
+              "weight": 20,
+              "home": 20,
+              "away": 20
+            },
+            {
+              "name": "历史交锋",
+              "weight": 15,
+              "home": 60,
+              "away": 40
+            },
+            {
+              "name": "伤停影响",
+              "weight": 15,
+              "home": 60,
+              "away": 55
+            },
+            {
+              "name": "主客场",
+              "weight": 10,
+              "home": 50,
+              "away": 50
+            },
+            {
+              "name": "赔率信号",
+              "weight": 10,
+              "home": 77,
+              "away": 23
+            },
+            {
+              "name": "其他因素",
+              "weight": 5,
+              "home": 50,
+              "away": 50
+            }
+          ],
+          "confidence": 72.0,
+          "confidence_stars": "****",
+          "confidence_label": "推荐",
+          "probabilities": {
+            "home": 77,
+            "draw": 15,
+            "away": 8
+          }
+        },
+        "prediction": {
+          "result": "home_win",
+          "label": "主胜 (塞内加尔)",
+          "score": "3-0",
+          "bet_amount": 1666.67,
+          "best_odds": 1.24
+        },
+        "result": null,
+        "team_info": {
+          "home": {
+            "fifa_rank": "20",
+            "value": "€300M",
+            "key_players": [
+              "Mane",
+              "Koulibaly",
+              "Mendy"
+            ]
+          },
+          "away": {
+            "fifa_rank": "68",
+            "value": "€30M",
+            "key_players": [
+              "M. Ali",
+              "Hussein",
+              "Resan"
+            ]
+          }
+        },
+        "notes": "两队均已淘汰,荣誉之战; 塞内加尔实力碾压",
+        "created_at": "2026-06-26T06:34:14.636713Z"
+      },
+      {
+        "id": "760474",
+        "date": "2026-06-27",
+        "time": "08:00",
+        "group": "H",
+        "venue": "NRG Stadium, Houston",
+        "home": "佛得角",
+        "away": "沙特阿拉伯",
+        "home_flag": "🇨🇻",
+        "away_flag": "🇸🇦",
+        "odds": {
+          "home": 2.65,
+          "draw": 3.3,
+          "away": 2.75,
+          "spread": 0,
+          "over_under": 2.5,
+          "over_odds": 2.15,
+          "under_odds": 1.69
+        },
+        "analysis": {
+          "scores": {
+            "home": 52.5,
+            "away": 46.5
+          },
+          "dimensions": [
+            {
+              "name": "球队实力",
+              "weight": 25,
+              "home": 50,
+              "away": 48
+            },
+            {
+              "name": "近期状态",
+              "weight": 20,
+              "home": 55,
+              "away": 45
+            },
+            {
+              "name": "历史交锋",
+              "weight": 15,
+              "home": 45,
+              "away": 55
+            },
+            {
+              "name": "伤停影响",
+              "weight": 15,
+              "home": 60,
+              "away": 55
+            },
+            {
+              "name": "主客场",
+              "weight": 10,
+              "home": 50,
+              "away": 50
+            },
+            {
+              "name": "赔率信号",
+              "weight": 10,
+              "home": 54,
+              "away": 46
+            },
+            {
+              "name": "其他因素",
+              "weight": 5,
+              "home": 50,
+              "away": 50
+            }
+          ],
+          "confidence": 38.0,
+          "confidence_stars": "**",
+          "confidence_label": "不建议",
+          "probabilities": {
+            "home": 36,
+            "draw": 29,
+            "away": 35
+          }
+        },
+        "prediction": {
+          "result": "home_win",
+          "label": "主胜 (佛得角)",
+          "score": "1-0",
+          "bet_amount": 1666.67,
+          "best_odds": 2.65
+        },
+        "result": null,
+        "team_info": {
+          "home": {
+            "fifa_rank": "63",
+            "value": "€80M",
+            "key_players": [
+              "Djaniny",
+              "Lima",
+              "Tavares"
+            ]
+          },
+          "away": {
+            "fifa_rank": "56",
+            "value": "€35M",
+            "key_players": [
+              "Al-Dawsari",
+              "Al-Buraikan",
+              "Al-Faraj"
+            ]
+          }
+        },
+        "notes": "H组乱战! 三队争2个出线名额, 佛得角和沙特均2分, 这场极度胶着",
+        "created_at": "2026-06-26T06:34:14.636713Z"
+      },
+      {
+        "id": "760475",
+        "date": "2026-06-27",
+        "time": "08:00",
+        "group": "H",
+        "venue": "Estadio Akron, Guadalajara",
+        "home": "乌拉圭",
+        "away": "西班牙",
+        "home_flag": "🇺🇾",
+        "away_flag": "🇪🇸",
+        "odds": {
+          "home": 7.0,
+          "draw": 4.1,
+          "away": 1.53,
+          "spread": 0.75,
+          "over_under": 2.5,
+          "over_odds": 2.1,
+          "under_odds": 1.71
+        },
+        "analysis": {
+          "scores": {
+            "home": 44.5,
+            "away": 68.0
+          },
+          "dimensions": [
+            {
+              "name": "球队实力",
+              "weight": 25,
+              "home": 72,
+              "away": 95
+            },
+            {
+              "name": "近期状态",
+              "weight": 20,
+              "home": 60,
+              "away": 85
+            },
+            {
+              "name": "历史交锋",
+              "weight": 15,
+              "home": 45,
+              "away": 55
+            },
+            {
+              "name": "伤停影响",
+              "weight": 15,
+              "home": 60,
+              "away": 65
+            },
+            {
+              "name": "主客场",
+              "weight": 10,
+              "home": 50,
+              "away": 50
+            },
+            {
+              "name": "赔率信号",
+              "weight": 10,
+              "home": 37,
+              "away": 63
+            },
+            {
+              "name": "其他因素",
+              "weight": 5,
+              "home": 50,
+              "away": 50
+            }
+          ],
+          "confidence": 63.0,
+          "confidence_stars": "***",
+          "confidence_label": "谨慎推荐",
+          "probabilities": {
+            "home": 14,
+            "draw": 23,
+            "away": 63
+          }
+        },
+        "prediction": {
+          "result": "away_win",
+          "label": "客胜 (西班牙)",
+          "score": "0-2",
+          "bet_amount": 1666.67,
+          "best_odds": 1.53
+        },
+        "result": null,
+        "team_info": {
+          "home": {
+            "fifa_rank": "15",
+            "value": "€550M",
+            "key_players": [
+              "Nunez",
+              "Valverde",
+              "Araujo"
+            ]
+          },
+          "away": {
+            "fifa_rank": "3",
+            "value": "€1.1B",
+            "key_players": [
+              "Yamal",
+              "Rodri",
+              "Morata"
+            ]
+          }
+        },
+        "notes": "H组焦点! 西班牙已出线(4分零封), 乌拉圭需至少1分",
+        "created_at": "2026-06-26T06:34:14.636713Z"
+      },
+      {
+        "id": "760478",
+        "date": "2026-06-27",
+        "time": "11:00",
+        "group": "G",
+        "venue": "Lumen Field, Seattle",
+        "home": "埃及",
+        "away": "伊朗",
+        "home_flag": "🇪🇬",
+        "away_flag": "🇮🇷",
+        "odds": {
+          "home": 2.5,
+          "draw": 2.6,
+          "away": 3.8,
+          "spread": -0.25,
+          "over_under": 1.5,
+          "over_odds": 1.59,
+          "under_odds": 2.4
+        },
+        "analysis": {
+          "scores": {
+            "home": 52.0,
+            "away": 47.0
+          },
+          "dimensions": [
+            {
+              "name": "球队实力",
+              "weight": 25,
+              "home": 55,
+              "away": 52
+            },
+            {
+              "name": "近期状态",
+              "weight": 20,
+              "home": 65,
+              "away": 45
+            },
+            {
+              "name": "历史交锋",
+              "weight": 15,
+              "home": 45,
+              "away": 55
+            },
+            {
+              "name": "伤停影响",
+              "weight": 15,
+              "home": 60,
+              "away": 55
+            },
+            {
+              "name": "主客场",
+              "weight": 10,
+              "home": 50,
+              "away": 50
+            },
+            {
+              "name": "赔率信号",
+              "weight": 10,
+              "home": 58,
+              "away": 42
+            },
+            {
+              "name": "其他因素",
+              "weight": 5,
+              "home": 50,
+              "away": 50
+            }
+          ],
+          "confidence": 38.0,
+          "confidence_stars": "**",
+          "confidence_label": "不建议",
+          "probabilities": {
+            "home": 38,
+            "draw": 37,
+            "away": 25
+          }
+        },
+        "prediction": {
+          "result": "draw",
+          "label": "平局",
+          "score": "1-1",
+          "bet_amount": 1666.67,
+          "best_odds": 2.6
+        },
+        "result": null,
+        "team_info": {
+          "home": {
+            "fifa_rank": "35",
+            "value": "€90M",
+            "key_players": [
+              "Salah",
+              "Marmoush",
+              "El Shenawy"
+            ]
+          },
+          "away": {
+            "fifa_rank": "22",
+            "value": "€60M",
+            "key_players": [
+              "Taremi",
+              "Azmoun",
+              "Beiranvand"
+            ]
+          }
+        },
+        "notes": "G组乱战! 4队都有可能出线, 大小球仅1.5, 预计闷战",
+        "created_at": "2026-06-26T06:34:14.636713Z"
+      },
+      {
+        "id": "760479",
+        "date": "2026-06-27",
+        "time": "11:00",
+        "group": "G",
+        "venue": "BC Place, Vancouver",
+        "home": "新西兰",
+        "away": "比利时",
+        "home_flag": "🇳🇿",
+        "away_flag": "🇧🇪",
+        "odds": {
+          "home": 16.0,
+          "draw": 8.5,
+          "away": 1.17,
+          "spread": 2.5,
+          "over_under": 3.5,
+          "over_odds": 1.95,
+          "under_odds": 1.83
+        },
+        "analysis": {
+          "scores": {
+            "home": 19.5,
+            "away": 81.5
+          },
+          "dimensions": [
+            {
+              "name": "球队实力",
+              "weight": 25,
+              "home": 20,
+              "away": 85
+            },
+            {
+              "name": "近期状态",
+              "weight": 20,
+              "home": 15,
+              "away": 50
+            },
+            {
+              "name": "历史交锋",
+              "weight": 15,
+              "home": 20,
+              "away": 80
+            },
+            {
+              "name": "伤停影响",
+              "weight": 15,
+              "home": 60,
+              "away": 60
+            },
+            {
+              "name": "主客场",
+              "weight": 10,
+              "home": 50,
+              "away": 50
+            },
+            {
+              "name": "赔率信号",
+              "weight": 10,
+              "home": 6,
+              "away": 94
+            },
+            {
+              "name": "其他因素",
+              "weight": 5,
+              "home": 50,
+              "away": 50
+            }
+          ],
+          "confidence": 78.0,
+          "confidence_stars": "****",
+          "confidence_label": "推荐",
+          "probabilities": {
+            "home": 6,
+            "draw": 11,
+            "away": 83
+          }
+        },
+        "prediction": {
+          "result": "away_win",
+          "label": "客胜 (比利时)",
+          "score": "0-4",
+          "bet_amount": 1666.67,
+          "best_odds": 1.17
+        },
+        "result": null,
+        "team_info": {
+          "home": {
+            "fifa_rank": "90",
+            "value": "€15M",
+            "key_players": [
+              "Wood",
+              "Singh",
+              "Bassett"
+            ]
+          },
+          "away": {
+            "fifa_rank": "5",
+            "value": "€600M",
+            "key_players": [
+              "De Bruyne",
+              "Doku",
+              "Tielemans"
+            ]
+          }
+        },
+        "notes": "比利时必须赢球才能出线! 新西兰已淘汰",
+        "created_at": "2026-06-26T06:34:14.636713Z"
+      }
+    ],
+    "2026-06-30": [
+      {
+        "id": "760487",
+        "date": "2026-06-30",
+        "time": "01:00",
+        "group": "R32",
+        "venue": "NRG Stadium, Houston",
+        "home": "巴西",
+        "away": "日本",
+        "home_flag": "🇧🇷",
+        "away_flag": "🇯🇵",
+        "odds": {
+          "home": 1.71,
+          "draw": 3.75,
+          "away": 5.25,
+          "spread": -1.0,
+          "over_under": 2.5,
+          "over_odds": 2.05,
+          "under_odds": 1.77
+        },
+        "analysis": {
+          "scores": {
+            "home": 75.3,
+            "away": 52.3
+          },
+          "dimensions": [
+            {
+              "name": "球队实力",
+              "weight": 25,
+              "home": 90,
+              "away": 70
+            },
+            {
+              "name": "近期状态",
+              "weight": 20,
+              "home": 80,
+              "away": 75
+            },
+            {
+              "name": "历史交锋",
+              "weight": 15,
+              "home": 70,
+              "away": 30
+            },
+            {
+              "name": "伤停影响",
+              "weight": 15,
+              "home": 70,
+              "away": 70
+            },
+            {
+              "name": "主客场",
+              "weight": 10,
+              "home": 55,
+              "away": 50
+            },
+            {
+              "name": "赔率信号",
+              "weight": 10,
+              "home": 75,
+              "away": 35
+            },
+            {
+              "name": "其他因素",
+              "weight": 5,
+              "home": 55,
+              "away": 50
+            }
+          ],
+          "confidence": 60.2,
+          "confidence_stars": "⭐⭐⭐",
+          "confidence_label": "谨慎推荐",
+          "probabilities": {
+            "home": 56,
+            "draw": 26,
+            "away": 18
+          }
+        },
+        "prediction": {
+          "result": "home_win",
+          "label": "主胜 (巴西)",
+          "score": "2-1",
+          "bet_amount": 3333.33,
+          "best_odds": 1.71
+        },
+        "result": null,
+        "recent_form": {
+          "home": [
+            {
+              "date": "06-14",
+              "opponent": "苏格兰",
+              "score": "3-0",
+              "result": "W"
+            },
+            {
+              "date": "06-18",
+              "opponent": "海地",
+              "score": "2-0",
+              "result": "W"
+            },
+            {
+              "date": "06-22",
+              "opponent": "摩洛哥",
+              "score": "2-1",
+              "result": "W"
+            }
+          ],
+          "away": [
+            {
+              "date": "06-14",
+              "opponent": "瑞典",
+              "score": "2-2",
+              "result": "D"
+            },
+            {
+              "date": "06-18",
+              "opponent": "突尼斯",
+              "score": "4-0",
+              "result": "W"
+            },
+            {
+              "date": "06-22",
+              "opponent": "荷兰",
+              "score": "1-0",
+              "result": "L"
+            }
+          ]
+        },
+        "team_info": {
+          "home": {
+            "fifa_rank": "4",
+            "value": "€1.1B",
+            "key_players": [
+              "维尼修斯",
+              "罗德里戈",
+              "恩德里克"
+            ]
+          },
+          "away": {
+            "fifa_rank": "16",
+            "value": "€350M",
+            "key_players": [
+              "三笘薰",
+              "久保建英",
+              "的的木优斗"
+            ]
+          }
+        },
+        "notes": "1/16决赛。巴西C组第1出线(7分)，日本F组第2出线(5分)。2006世界杯巴西2-0日本。桑巴军团攻击力强大，日本以团队配合见长。",
+        "created_at": "2026-06-29T22:00:00Z"
+      },
+      {
+        "id": "760489",
+        "date": "2026-06-30",
+        "time": "04:30",
+        "group": "R32",
+        "venue": "Gillette Stadium, Foxborough",
+        "home": "德国",
+        "away": "巴拉圭",
+        "home_flag": "🇩🇪",
+        "away_flag": "🇵🇾",
+        "odds": {
+          "home": 1.36,
+          "draw": 5.0,
+          "away": 9.0,
+          "spread": -1.5,
+          "over_under": 2.5,
+          "over_odds": 1.74,
+          "under_odds": 2.1
+        },
+        "analysis": {
+          "scores": {
+            "home": 79.8,
+            "away": 42.0
+          },
+          "dimensions": [
+            {
+              "name": "球队实力",
+              "weight": 25,
+              "home": 85,
+              "away": 50
+            },
+            {
+              "name": "近期状态",
+              "weight": 20,
+              "home": 85,
+              "away": 45
+            },
+            {
+              "name": "历史交锋",
+              "weight": 15,
+              "home": 70,
+              "away": 30
+            },
+            {
+              "name": "伤停影响",
+              "weight": 15,
+              "home": 70,
+              "away": 70
+            },
+            {
+              "name": "主客场",
+              "weight": 10,
+              "home": 50,
+              "away": 50
+            },
+            {
+              "name": "赔率信号",
+              "weight": 10,
+              "home": 90,
+              "away": 20
+            },
+            {
+              "name": "其他因素",
+              "weight": 5,
+              "home": 60,
+              "away": 45
+            }
+          ],
+          "confidence": 79.5,
+          "confidence_stars": "⭐⭐⭐⭐⭐",
+          "confidence_label": "强烈推荐",
+          "probabilities": {
+            "home": 70,
+            "draw": 19,
+            "away": 11
+          }
+        },
+        "prediction": {
+          "result": "home_win",
+          "label": "主胜 (德国)",
+          "score": "3-0",
+          "bet_amount": 3333.33,
+          "best_odds": 1.36
+        },
+        "result": null,
+        "recent_form": {
+          "home": [
+            {
+              "date": "06-14",
+              "opponent": "库拉索",
+              "score": "7-1",
+              "result": "W"
+            },
+            {
+              "date": "06-18",
+              "opponent": "厄瓜多尔",
+              "score": "1-2",
+              "result": "L"
+            },
+            {
+              "date": "06-24",
+              "opponent": "科特迪瓦",
+              "score": "3-1",
+              "result": "W"
+            }
+          ],
+          "away": [
+            {
+              "date": "06-11",
+              "opponent": "美国",
+              "score": "4-1",
+              "result": "L"
+            },
+            {
+              "date": "06-15",
+              "opponent": "土耳其",
+              "score": "1-0",
+              "result": "W"
+            },
+            {
+              "date": "06-24",
+              "opponent": "澳大利亚",
+              "score": "0-0",
+              "result": "D"
+            }
+          ]
+        },
+        "team_info": {
+          "home": {
+            "fifa_rank": "16",
+            "value": "€1.0B",
+            "key_players": [
+              "穆西亚拉",
+              "维尔茨",
+              "哈弗茨"
+            ]
+          },
+          "away": {
+            "fifa_rank": "58",
+            "value": "€140M",
+            "key_players": [
+              "阿尔米隆",
+              "恩西索",
+              "萨纳夫里亚"
+            ]
+          }
+        },
+        "notes": "1/16决赛。德国E组第1出线(6分,进10球)，巴拉圭D组第3出线(4分,仅进2球)。2002世界杯淘汰赛德国1-0巴拉圭。实力差距悬殊。",
+        "created_at": "2026-06-29T22:00:00Z"
+      },
+      {
+        "id": "760488",
+        "date": "2026-06-30",
+        "time": "09:00",
+        "group": "R32",
+        "venue": "Estadio BBVA, Monterrey",
+        "home": "荷兰",
+        "away": "摩洛哥",
+        "home_flag": "🇳🇱",
+        "away_flag": "🇲🇦",
+        "odds": {
+          "home": 2.3,
+          "draw": 3.1,
+          "away": 3.5,
+          "spread": -0.5,
+          "over_under": 2.5,
+          "over_odds": 2.2,
+          "under_odds": 1.67
+        },
+        "analysis": {
+          "scores": {
+            "home": 64.3,
+            "away": 58.0
+          },
+          "dimensions": [
+            {
+              "name": "球队实力",
+              "weight": 25,
+              "home": 85,
+              "away": 65
+            },
+            {
+              "name": "近期状态",
+              "weight": 20,
+              "home": 55,
+              "away": 70
+            },
+            {
+              "name": "历史交锋",
+              "weight": 15,
+              "home": 55,
+              "away": 45
+            },
+            {
+              "name": "伤停影响",
+              "weight": 15,
+              "home": 60,
+              "away": 70
+            },
+            {
+              "name": "主客场",
+              "weight": 10,
+              "home": 55,
+              "away": 50
+            },
+            {
+              "name": "赔率信号",
+              "weight": 10,
+              "home": 60,
+              "away": 45
+            },
+            {
+              "name": "其他因素",
+              "weight": 5,
+              "home": 45,
+              "away": 55
+            }
+          ],
+          "confidence": 52.8,
+          "confidence_stars": "⭐⭐⭐",
+          "confidence_label": "谨慎推荐",
+          "probabilities": {
+            "home": 42,
+            "draw": 31,
+            "away": 27
+          }
+        },
+        "prediction": {
+          "result": "home_win",
+          "label": "主胜 (荷兰)",
+          "score": "2-1",
+          "bet_amount": 3333.33,
+          "best_odds": 2.3
+        },
+        "result": null,
+        "recent_form": {
+          "home": [
+            {
+              "date": "06-14",
+              "opponent": "瑞典",
+              "score": "5-1",
+              "result": "W"
+            },
+            {
+              "date": "06-18",
+              "opponent": "日本",
+              "score": "2-3",
+              "result": "L"
+            },
+            {
+              "date": "06-22",
+              "opponent": "突尼斯",
+              "score": "3-0",
+              "result": "W"
+            }
+          ],
+          "away": [
+            {
+              "date": "06-14",
+              "opponent": "苏格兰",
+              "score": "1-0",
+              "result": "W"
+            },
+            {
+              "date": "06-18",
+              "opponent": "海地",
+              "score": "3-1",
+              "result": "W"
+            },
+            {
+              "date": "06-22",
+              "opponent": "巴西",
+              "score": "1-2",
+              "result": "L"
+            }
+          ]
+        },
+        "team_info": {
+          "home": {
+            "fifa_rank": "8",
+            "value": "€950M",
+            "key_players": [
+              "加克波",
+              "西蒙斯",
+              "范迪克"
+            ]
+          },
+          "away": {
+            "fifa_rank": "14",
+            "value": "€350M",
+            "key_players": [
+              "阿什拉夫",
+              "齐耶赫",
+              "恩内斯里"
+            ]
+          }
+        },
+        "notes": "1/16决赛。荷兰F组第1出线(7分,进10球)，摩洛哥C组第2出线(7分,仅失3球)。1998年唯一交锋荷兰5-1。摩洛哥防守体系成熟(2022世界杯四强)，本场最胶着。",
+        "created_at": "2026-06-29T22:00:00Z"
+      }
+    ]
+  },
+  "summary": {
+    "total_matches": 15,
+    "total_dates": 3,
+    "analyzed": 15,
+    "settled": 0,
+    "pending": 15
+  }
+}
