@@ -7,7 +7,7 @@
     "strategy": "均衡型(7维分析驱动)",
     "allocation": {
       "稳胆(胜负平)": 0.55,
-      "比分/高赔": 0.30,
+      "比分/高赔": 0.3,
       "串关": 0.15
     },
     "focus_matches": "2-3场/天"
@@ -27,11 +27,11 @@
       "confidence": "强烈推荐",
       "reason": "7维分析:法国84.2分vs瑞典57.0分,信心100%。FIFA#2身价11.7亿碾压,4-1大胜挪威状态火热,交锋近5次3胜2平不败,让1.5球盘口支撑大胜",
       "bet_amount": 350.0,
-      "status": "pending",
-      "actual_result": null,
-      "profit_loss": 0.0,
+      "status": "won",
+      "actual_result": "home_win",
+      "profit_loss": 101.5,
       "created_at": "2026-06-30 23:30:00",
-      "updated_at": null
+      "updated_at": "2026-07-01 11:04:03"
     },
     {
       "id": "p2_d1_002",
@@ -47,11 +47,11 @@
       "confidence": "小试",
       "reason": "法国攻击线状态极好,淘汰赛首战求稳且求大胜,瑞典进攻乏力难以破门,3-0概率较高",
       "bet_amount": 50.0,
-      "status": "pending",
-      "actual_result": null,
-      "profit_loss": 0.0,
+      "status": "won",
+      "actual_result": "3-0",
+      "profit_loss": 500.0,
       "created_at": "2026-06-30 23:30:00",
-      "updated_at": null
+      "updated_at": "2026-07-01 11:04:03"
     },
     {
       "id": "p2_d1_003",
@@ -63,7 +63,7 @@
       "bet_type": "winner",
       "prediction": "draw",
       "prediction_label": "平局",
-      "odds": 2.90,
+      "odds": 2.9,
       "confidence": "推荐",
       "reason": "7维分析:两队仅差2分(62vs64),信心仅10%高度均衡。大小球1.5预示闷战,厄瓜多尔防守南美最佳,墨西哥进攻乏力,淘汰赛常规时间平局概率约33%",
       "bet_amount": 200.0,
@@ -107,11 +107,11 @@
       "confidence": "谨慎推荐",
       "reason": "7维分析:信心51%不高,挪威实力占优(72vs60)但大赛经验极缺(1998后首次),科特迪瓦卫冕非洲杯冠军淘汰赛底蕴深。挪威防守漏洞大(1-4输法国),科特迪瓦进攻有限。淘汰赛闷战平局概率28%,@3.45有投注价值",
       "bet_amount": 150.0,
-      "status": "pending",
-      "actual_result": null,
-      "profit_loss": 0.0,
+      "status": "lost",
+      "actual_result": "away_win",
+      "profit_loss": -150.0,
       "created_at": "2026-06-30 23:30:00",
-      "updated_at": null
+      "updated_at": "2026-07-01 11:04:03"
     },
     {
       "id": "p2_d1_006",
@@ -127,11 +127,11 @@
       "confidence": "小试",
       "reason": "两队风格互补:挪威有Haaland能进球但防守差,科特迪瓦有经验但攻击力有限。1-1是实力差距不大时的常见比分",
       "bet_amount": 50.0,
-      "status": "pending",
-      "actual_result": null,
-      "profit_loss": 0.0,
+      "status": "lost",
+      "actual_result": "1-2",
+      "profit_loss": -50.0,
       "created_at": "2026-06-30 23:30:00",
-      "updated_at": null
+      "updated_at": "2026-07-01 11:04:03"
     },
     {
       "id": "p2_d1_007",
@@ -147,11 +147,11 @@
       "confidence": "谨慎推荐",
       "reason": "法国胜(信心100%)串平局(信心45%),联合概率约43%。回报3.74较好,法国稳胆带动串关可信度",
       "bet_amount": 150.0,
-      "status": "pending",
-      "actual_result": null,
-      "profit_loss": 0.0,
+      "status": "lost",
+      "actual_result": "lost",
+      "profit_loss": -150.0,
       "created_at": "2026-06-30 23:30:00",
-      "updated_at": null
+      "updated_at": "2026-07-01 11:04:03"
     }
   ],
   "daily_summary": {
@@ -167,13 +167,13 @@
   },
   "summary": {
     "total_predictions": 7,
-    "correct": 0,
-    "incorrect": 0,
-    "pending": 7,
+    "correct": 2,
+    "incorrect": 3,
+    "pending": 2,
     "total_invested": 1000.0,
-    "total_returned": 0.0,
-    "net_profit": 0.0,
-    "roi": 0.0,
-    "win_rate": 0.0
+    "total_returned": 1001.5,
+    "net_profit": 1.5,
+    "roi": 0.15,
+    "win_rate": 40.0
   }
 }
